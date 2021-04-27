@@ -1331,6 +1331,7 @@ object frmLogin: TfrmLogin
     Color = 16043404
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -8
     object Shape1: TShape
       Left = 161
       Top = 41

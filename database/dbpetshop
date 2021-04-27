@@ -1,0 +1,139 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 22, 2020 at 10:46 PM
+-- Server version: 8.0.18
+-- PHP Version: 7.3.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `dbpetshop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `Clie_Codigo` int(11) NOT NULL,
+  `Clie_Nome` varchar(40) NOT NULL,
+  `Clie_Admissao` date NOT NULL,
+  `Clie_Celular` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Clie_CPF` char(11) DEFAULT NULL,
+  `Clie_Nascm` date DEFAULT NULL,
+  `Clie_Sexo` char(1) NOT NULL,
+  `Clie_Endereco` varchar(40) DEFAULT NULL,
+  `Clie_NumEnd` varchar(5) DEFAULT NULL,
+  `Clie_Bairro` varchar(30) DEFAULT NULL,
+  `Clie_Cidade` varchar(30) DEFAULT NULL,
+  `Clie_UF` char(2) DEFAULT NULL,
+  `Clie_Pais` varchar(25) DEFAULT NULL,
+  `Clie_Email` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`Clie_Codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cliente`
+--
+
+INSERT INTO `cliente` (`Clie_Codigo`, `Clie_Nome`, `Clie_Admissao`, `Clie_Celular`, `Clie_CPF`, `Clie_Nascm`, `Clie_Sexo`, `Clie_Endereco`, `Clie_NumEnd`, `Clie_Bairro`, `Clie_Cidade`, `Clie_UF`, `Clie_Pais`, `Clie_Email`) VALUES
+(1, 'Luiz Henrique', '2020-08-15', '48554551224', '11122233349', '2002-11-01', 'M', 'Av. JoaoVisconde', '233', 'MinaAurora', 'Santo', 'MA', 'Brasil', 'luiz@gmail.com'),
+(2, 'Rafael Matias', '2020-08-17', '44445458524', '11188544858', '2000-12-01', 'M', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Matheus Roberto', '2020-08-22', '48554545445', '15445848855', '1979-11-01', 'M', 'R. JAISISOSOA', '34', 'NEOPO', 'NEOPOLIS', 'AL', 'Brasil', 'Matheus@hotmail.com'),
+(4, 'Gustavo Aras', '2020-08-22', '48888845545', '51541545848', '2001-11-11', 'M', 'R Jose SilvaA', '432', 'Bizantino', 'Aurora', 'CE', 'Brasil', NULL),
+(5, 'José Ricardo Luiz', '2020-08-22', '48554574515', '11255488545', '2001-11-01', 'M', 'R. Visconde Souzafdsssss', '23', 'Comerciario', 'Criciuma', 'SC', 'Brasil', NULL),
+(6, 'Luiz Henrique', '2020-08-22', '11554835984', '11123335154', '2002-11-01', 'M', 'R Joao Boscodsds', '45', 'Comerciario', 'Criciuma', 'AM', 'Brasil', 'luiz@hotmai.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pet`
+--
+
+DROP TABLE IF EXISTS `pet`;
+CREATE TABLE IF NOT EXISTS `pet` (
+  `Pet_Codigo` int(11) NOT NULL,
+  `Pet_Nome` varchar(20) NOT NULL,
+  `Pet_Apelido` varchar(10) DEFAULT NULL,
+  `Pet_Especie` varchar(15) DEFAULT NULL,
+  `Pet_Raca` varchar(20) DEFAULT NULL,
+  `Pet_Admissao` date NOT NULL,
+  `Pet_Cor` varchar(20) DEFAULT NULL,
+  `Pet_Sexo` char(1) NOT NULL,
+  `Pet_Porte` varchar(15) DEFAULT NULL,
+  `Pet_Peso` float NOT NULL,
+  `Pet_Vacina` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Pet_Pelagem` varchar(20) DEFAULT NULL,
+  `Pet_Detalhes` text,
+  `Pet_Alergia` char(1) DEFAULT NULL,
+  `Pet_Deficiencia` char(1) DEFAULT NULL,
+  `Pet_Pedigree` char(1) DEFAULT NULL,
+  `Pet_Foto` varchar(200) DEFAULT NULL,
+  `Clie_Codigo` int(11) NOT NULL,
+  PRIMARY KEY (`Pet_Codigo`),
+  KEY `Clie_Codigo_FK` (`Clie_Codigo`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `pet`
+--
+
+INSERT INTO `pet` (`Pet_Codigo`, `Pet_Nome`, `Pet_Apelido`, `Pet_Especie`, `Pet_Raca`, `Pet_Admissao`, `Pet_Cor`, `Pet_Sexo`, `Pet_Porte`, `Pet_Peso`, `Pet_Vacina`, `Pet_Pelagem`, `Pet_Detalhes`, `Pet_Alergia`, `Pet_Deficiencia`, `Pet_Pedigree`, `Pet_Foto`, `Clie_Codigo`) VALUES
+(1, 'Tobias', 'Toby', 'Cachorro', 'Pinscher', '2020-08-22', 'Marrom', 'M', 'Pequeno', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2),
+(2, 'Lalica', 'Lilica', 'Cachorro', 'Mestiça', '2020-08-22', 'Branca', 'F', 'Media', 2.5, 'sim', 'Grande', 'A- Farofa\r\nA- Arroza\r\nD- Pata Esquerda\r\n', 'S', 'S', 'S', NULL, 1),
+(3, 'Kiko', 'Kiko', 'Passáro', 'Calopsita', '2020-08-22', 'Verde com Amarelo', 'M', 'Pequeno', 0.5, NULL, 'Curta', 'A- Gatos\r\nD- Asa Quebrada\r\n', 'S', 'S', 'N', NULL, 3),
+(4, 'Rubens', 'Rube', 'Cobra', 'Coral', '2020-08-22', 'Vermelha e Preta', 'M', 'Normal', 0, NULL, '*Inexistente*', NULL, NULL, NULL, NULL, NULL, 3),
+(5, 'Tobias', 'Toby', 'Cachorro', 'Bulldog', '2020-08-22', 'Branco', 'M', 'Pequeno', 2.4, 'CPiV - Vírus da Parainfluenza Canina', 'Curta', 'A- Arroz\r\nA- Felinos\r\nA- Salada\r\nD- Perna esquerda fraturada\r\n', 'S', 'S', 'S', NULL, 3),
+(6, 'dsahudsadsa', 'sadas', 'dsad', 'ds', '2020-08-22', 'ds', 'M', 'Muito pequeno', 3, 'CPiV - Vírus da Parainfluenza Canina', 'Curta', NULL, NULL, NULL, NULL, NULL, 3),
+(7, 'Toddy', 'Toto', 'Cachorro', 'Pisncher', '2020-08-22', 'Preto', 'M', 'Muito pequeno', 2.5, NULL, 'Curta', 'A- Suco de laranja\r\nA- Maçã\r\nD- Perna esquerda\r\nSIM\r\n', 'S', 'S', 'S', NULL, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `User_Cod` int(11) NOT NULL,
+  `User_Name` varchar(15) NOT NULL,
+  `User_Pass` varchar(15) NOT NULL,
+  PRIMARY KEY (`User_Cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`User_Cod`, `User_Name`, `User_Pass`) VALUES
+(1, 'luiz', '123');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `pet`
+--
+ALTER TABLE `pet`
+  ADD CONSTRAINT `Clie_Codigo_FK` FOREIGN KEY (`Clie_Codigo`) REFERENCES `cliente` (`Clie_Codigo`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

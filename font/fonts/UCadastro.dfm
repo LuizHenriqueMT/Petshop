@@ -3478,6 +3478,7 @@ object frmClientes: TfrmClientes
         Height = 21
         TabOrder = 0
         OnClick = edtPesquisaClick
+        OnKeyPress = edtPesquisaKeyPress
       end
       object btnPesquisa: TBitBtn
         Left = 207
@@ -3493,6 +3494,7 @@ object frmClientes: TfrmClientes
         ParentFont = False
         TabOrder = 1
         OnClick = btnPesquisaClick
+        OnKeyPress = btnPesquisaKeyPress
       end
       object Panel3: TPanel
         Left = 16
@@ -3517,6 +3519,7 @@ object frmClientes: TfrmClientes
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnKeyPress = gdPesquisaKeyPress
           Columns = <
             item
               Expanded = False
@@ -3652,6 +3655,7 @@ object frmClientes: TfrmClientes
         ParentFont = False
         TabOrder = 4
         OnClick = btnAbrirDadosClick
+        OnKeyPress = btnAbrirDadosKeyPress
       end
       object btnRelatorio: TBitBtn
         Left = 311
@@ -3668,6 +3672,7 @@ object frmClientes: TfrmClientes
         ParentFont = False
         TabOrder = 5
         OnClick = btnRelatorioClick
+        OnKeyPress = btnRelatorioKeyPress
       end
       object rgRelatorio: TRadioGroup
         Left = 311

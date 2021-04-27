@@ -147,6 +147,15 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
+    procedure btnPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure btnRelaorioKeyPress(Sender: TObject; var Key: Char);
+    procedure btnAbriDadosKeyPress(Sender: TObject; var Key: Char);
+    procedure gdPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure btnRelatorioKeyPress(Sender: TObject; var Key: Char);
+    procedure btnAbrirDadosKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     procedure ButtonsOFF;
@@ -196,8 +205,26 @@ begin
         begin
           modulo.Pet.Last;
         end;
+
 end;
 
+
+procedure TfrmClientes.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+      if key = Vk_escape then
+        rgPesquisa.ItemIndex:= -1;
+end;
+
+procedure TfrmClientes.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(sender, key);
+end;
+
+procedure TfrmClientes.gdPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(Sender, key);
+end;
 
 procedure TfrmClientes.AtivarALL(AtivarTab: TTabSheet; Hab: Boolean); //Ativar Manipulaçãop edits
 var   Ativador: integer;
@@ -250,6 +277,16 @@ begin
           modulo.frxReport1.LoadFromFile(getcurrentdir + '\report\RelatorioAmbos.fr3');
           modulo.frxReport1.ShowReport();
         end;
+end;
+
+procedure TfrmClientes.btnAbrirDadosKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(sender, key);
+end;
+
+procedure TfrmClientes.btnAbriDadosKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(Sender, key);
 end;
 
 procedure TfrmClientes.btnAdicionarClick(Sender: TObject);
@@ -500,6 +537,17 @@ begin
               modulo.QueryGrid.Open();
             end;
 
+          if (edtPesquisa.Text = '') then
+            begin
+
+            end;
+
+
+end;
+
+procedure TfrmClientes.btnPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(Sender, key);
 end;
 
 procedure TfrmClientes.btnPesquisarClick(Sender: TObject);
@@ -559,8 +607,8 @@ begin
                 modulo.querygrid.sql.Clear;
                 modulo.querygrid.SQL.Add('Select *, Cliente.Clie_Nome, Cliente.Clie_CPF FROM pet INNER Join Cliente ON Pet.Clie_Codigo = Cliente.Clie_Codigo ');
                 Modulo.QueryGrid.SQL.Add('Where Pet_Codigo IN ('+lbGetRow.Caption+')');
-                modulo.frxReport1.LoadFromFile(getcurrentdir + '\Sistema PetShop\report\RelatorioAmbos.fr3');
-                modulo.frxReport1.ShowReport();
+                modulo.frxReport1.LoadFromFile(getcurrentdir + '\report\RelatorioAmbos.fr3');
+                //modulo.frxReport1.ShowReport();
               end
             else
             if rgRelatorio.ItemIndex = 1 then
@@ -569,8 +617,8 @@ begin
                 modulo.QueryCliente.SQL.Clear;
                 modulo.QueryCliente.SQL.Add('Select * from Cliente');
                 modulo.QueryCliente.SQL.Add('Where Clie_Codigo IN ('+lbGetRow.caption+')');
-                modulo.frxReport1.LoadFromFile(getcurrentdir + '\Sistema PetShop\report\RelatorioCliente.fr3');
-                modulo.frxReport1.ShowReport();
+                modulo.frxReport1.LoadFromFile(getcurrentdir + '\report\RelatorioCliente.fr3');
+                //modulo.frxReport1.ShowReport();
               end
             else
             if rgRelatorio.ItemIndex = 2 then
@@ -579,8 +627,8 @@ begin
                 modulo.QueryPetFields.SQL.Clear;
                 modulo.QueryPetFields.SQL.Add('Select * from Pet');
                 modulo.QueryPetFields.SQL.Add('Where Pet_Codigo IN ('+lbGetRow.caption+')');
-                modulo.frxReport1.LoadFromFile(getcurrentdir + '\Sistema PetShop\report\RelatorioPet.fr3');
-                modulo.frxReport1.ShowReport();
+                modulo.frxReport1.LoadFromFile(getcurrentdir + '\report\RelatorioPet.fr3');
+                //modulo.frxReport1.ShowReport();
               end;
 
           end;
@@ -593,14 +641,24 @@ begin
         nomerel:= (formatdatetime('dd.mm.yyyy HH.MM.SS',now));
         with modulo do
           begin
-            frxPDFExport.FileName := GetCurrentDir + '\Sistema PetShop\report\Gerados\'+NomeRel+ '.pdf';
-            frxPDFExport.DefaultPath := GetCurrentDir + '\Sistema PetShop\report\';
+            frxPDFExport.FileName := GetCurrentDir + '\report\Gerados\'+NomeRel+ '.pdf';
+            frxPDFExport.DefaultPath := GetCurrentDir + '\report\';
             frxPDFExport.ShowDialog := False;
             frxPDFExport.ShowProgress := False;
             frxPDFExport.OverwritePrompt := False;
             frxReport1.PrepareReport();
             frxReport1.Export(frxPDFExport);
           end;
+end;
+
+procedure TfrmClientes.btnRelatorioKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(sender, key);
+end;
+
+procedure TfrmClientes.btnRelaorioKeyPress(Sender: TObject; var Key: Char);
+begin
+      frmClientes.OnKeyPress(Sender, key);
 end;
 
 procedure TfrmClientes.btnSalvarClick(Sender: TObject);
@@ -801,6 +859,14 @@ end;
 procedure TfrmClientes.edtPesquisaClick(Sender: TObject);
 begin
       btnPesquisa.Enabled:= true;
+end;
+
+procedure TfrmClientes.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+      if (key = #27) then
+        begin
+          rgPesquisa.ItemIndex:= -1;
+        end;
 end;
 
 procedure TfrmClientes.ButtonON; //ButtonsON
