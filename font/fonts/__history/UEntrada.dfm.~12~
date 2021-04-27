@@ -1,0 +1,53 @@
+object frmEntrada: TfrmEntrada
+  Left = 0
+  Top = 0
+  Caption = 'Entrada'
+  ClientHeight = 461
+  ClientWidth = 896
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PaintBox1: TPaintBox
+    Left = 0
+    Top = 0
+    Width = 896
+    Height = 461
+    Align = alClient
+    OnPaint = PaintBox1Paint
+    ExplicitLeft = 496
+    ExplicitTop = 192
+    ExplicitWidth = 105
+    ExplicitHeight = 105
+  end
+  object lbNomeP: TLabel
+    Left = 25
+    Top = 27
+    Width = 77
+    Height = 16
+    Caption = 'Nome dono:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object edtNomePet: TDBEdit
+    Left = 25
+    Top = 44
+    Width = 232
+    Height = 21
+    DataField = 'Pet_Nome'
+    DataSource = Modulo.DSPet
+    Enabled = False
+    TabOrder = 0
+  end
+end

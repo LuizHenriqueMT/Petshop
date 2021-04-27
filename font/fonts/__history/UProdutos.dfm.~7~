@@ -1,0 +1,109 @@
+object frmProdutos: TfrmProdutos
+  Left = 0
+  Top = 0
+  Caption = 'Produtos'
+  ClientHeight = 455
+  ClientWidth = 810
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PaintBox3: TPaintBox
+    Left = 0
+    Top = 0
+    Width = 810
+    Height = 455
+    Align = alClient
+    OnPaint = PaintBox3Paint
+    ExplicitLeft = 3
+    ExplicitWidth = 633
+    ExplicitHeight = 395
+  end
+  object lbProdCodigo: TLabel
+    Left = 21
+    Top = 26
+    Width = 63
+    Height = 16
+    Caption = 'C'#243'd. Prod'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 101
+    Top = 26
+    Width = 91
+    Height = 16
+    Caption = 'Nome Produto'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 21
+    Top = 74
+    Width = 34
+    Height = 16
+    Caption = 'Qtde.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 293
+    Top = 26
+    Width = 32
+    Height = 16
+    Caption = 'Tipo:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object DBEdit1: TDBEdit
+    Left = 21
+    Top = 48
+    Width = 63
+    Height = 21
+    TabOrder = 0
+  end
+  object DBEdit2: TDBEdit
+    Left = 101
+    Top = 48
+    Width = 180
+    Height = 21
+    TabOrder = 1
+  end
+  object DBEdit3: TDBEdit
+    Left = 21
+    Top = 96
+    Width = 180
+    Height = 21
+    TabOrder = 2
+  end
+  object DBComboBox1: TDBComboBox
+    Left = 293
+    Top = 48
+    Width = 145
+    Height = 22
+    Style = csOwnerDrawFixed
+    TabOrder = 3
+  end
+end

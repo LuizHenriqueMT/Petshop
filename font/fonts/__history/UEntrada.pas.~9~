@@ -1,0 +1,43 @@
+unit UEntrada;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  TfrmEntrada = class(TForm)
+    PaintBoxEntrada: TPaintBox;
+    procedure FormActivate(Sender: TObject);
+    procedure paintbox1PaintEntrada(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmEntrada: TfrmEntrada;
+
+implementation
+
+{$R *.dfm}
+
+uses UDataBase, UPrincipal;
+
+procedure TfrmEntrada.FormActivate(Sender: TObject);
+begin
+      {Modulo.Conexao.Connected:= true;
+      modulo.tbCliente.Active:= true;
+      modulo.Usuario.Active:= true;
+      modulo.Pet.Active:= true;}
+end;
+
+
+procedure TfrmEntrada.paintbox1Paint(Sender: TObject);
+begin
+
+end;
+
+end.

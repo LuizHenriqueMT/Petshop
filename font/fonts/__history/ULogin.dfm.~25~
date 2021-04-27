@@ -1,0 +1,127 @@
+object frmLogin: TfrmLogin
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'PetShop Karev'
+  ClientHeight = 261
+  ClientWidth = 581
+  Color = 2565927
+  TransparentColorValue = 2565927
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  Visible = True
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlPrincipal: TPanel
+    Left = 0
+    Top = 0
+    Width = 581
+    Height = 261
+    Align = alClient
+    Color = 16043404
+    ParentBackground = False
+    TabOrder = 0
+    object Shape1: TShape
+      Left = 217
+      Top = 59
+      Width = 123
+      Height = 38
+      Brush.Color = 16562034
+      Pen.Color = clWhite
+      Shape = stRoundRect
+    end
+    object Label1: TLabel
+      Left = 187
+      Top = 124
+      Width = 56
+      Height = 23
+      Caption = 'Nome:'
+      Color = clCream
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clCream
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 183
+      Top = 151
+      Width = 60
+      Height = 23
+      Caption = 'Senha:'
+      Color = clBtnHighlight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clCream
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 252
+      Top = 64
+      Width = 50
+      Height = 25
+      Caption = 'Login'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object edtLogin: TDBEdit
+      Left = 246
+      Top = 126
+      Width = 121
+      Height = 21
+      DataField = 'NomeUser'
+      DataSource = Modulo.DSUsuario
+      TabOrder = 0
+    end
+    object edtSenha: TDBEdit
+      Left = 246
+      Top = 153
+      Width = 121
+      Height = 21
+      AutoSelect = False
+      DataField = 'Senha'
+      DataSource = Modulo.DSUsuario
+      PasswordChar = '*'
+      TabOrder = 1
+    end
+    object BitBtn1: TBitBtn
+      Left = 183
+      Top = 192
+      Width = 75
+      Height = 25
+      Caption = 'Principal'
+      TabOrder = 2
+      OnClick = BitBtn1Click
+    end
+    object btnEntrarUser: TBitBtn
+      Left = 292
+      Top = 192
+      Width = 75
+      Height = 25
+      Caption = 'Entrar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 13064238
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnEntrarUserClick
+    end
+  end
+end

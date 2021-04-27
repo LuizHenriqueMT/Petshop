@@ -1,0 +1,49 @@
+unit UPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.Buttons;
+
+type
+  TfrmPrincipal = class(TForm)
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    procedure Image1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses UCadastro, ULogin;
+
+procedure TfrmPrincipal.FormActivate(Sender: TObject);
+begin
+      frmLogin.hide;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+      Application.Terminate;
+end;
+
+procedure TfrmPrincipal.Image1Click(Sender: TObject);
+begin
+      frmPrincipal.close;
+      frmClientes.showmodal;
+end;
+
+end.

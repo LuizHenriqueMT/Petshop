@@ -1,0 +1,1676 @@
+object Modulo: TModulo
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 495
+  Width = 846
+  object FDWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 40
+    Top = 32
+  end
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'Database=dbpetshop'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 112
+    Top = 32
+  end
+  object FMDriver: TFDPhysMySQLDriverLink
+    Left = 184
+    Top = 32
+  end
+  object tbCliente: TFDTable
+    Active = True
+    IndexFieldNames = 'Clie_Codigo'
+    Connection = Conexao
+    UpdateOptions.UpdateTableName = 'dbpetshop.cliente'
+    TableName = 'dbpetshop.cliente'
+    Left = 40
+    Top = 120
+    object tbClienteClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object tbClienteClie_Nome: TStringField
+      FieldName = 'Clie_Nome'
+      Origin = 'Clie_Nome'
+      Required = True
+      Size = 40
+    end
+    object tbClienteClie_Admissao: TDateField
+      FieldName = 'Clie_Admissao'
+      Origin = 'Clie_Admissao'
+      Required = True
+    end
+    object tbClienteClie_Nascm: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nascm'
+      Origin = 'Clie_Nascm'
+    end
+    object tbClienteClie_Sexo: TStringField
+      FieldName = 'Clie_Sexo'
+      Origin = 'Clie_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object tbClienteClie_Endereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Endereco'
+      Origin = 'Clie_Endereco'
+      Size = 40
+    end
+    object tbClienteClie_NumEnd: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_NumEnd'
+      Origin = 'Clie_NumEnd'
+      Size = 5
+    end
+    object tbClienteClie_Bairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Bairro'
+      Origin = 'Clie_Bairro'
+      Size = 30
+    end
+    object tbClienteClie_Cidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Cidade'
+      Origin = 'Clie_Cidade'
+      Size = 30
+    end
+    object tbClienteClie_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_UF'
+      Origin = 'Clie_UF'
+      FixedChar = True
+      Size = 2
+    end
+    object tbClienteClie_Pais: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Pais'
+      Origin = 'Clie_Pais'
+      Size = 25
+    end
+    object tbClienteClie_Email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Email'
+      Origin = 'Clie_Email'
+      Size = 40
+    end
+    object tbClienteClie_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Foto'
+      Origin = 'Clie_Foto'
+      Size = 200
+    end
+    object tbClienteClie_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_CPF'
+      Origin = 'Clie_CPF'
+      EditMask = '000.000.000-00;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object tbClienteClie_Celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Celular'
+      Origin = 'Clie_Celular'
+      FixedChar = True
+      Size = 11
+    end
+  end
+  object DSCliente: TDataSource
+    DataSet = tbCliente
+    Left = 40
+    Top = 192
+  end
+  object DSUsuario: TDataSource
+    AutoEdit = False
+    DataSet = Usuario
+    Left = 104
+    Top = 192
+  end
+  object Pet: TFDTable
+    Active = True
+    IndexFieldNames = 'Pet_Codigo'
+    DetailFields = 'Pet_Codigo'
+    Connection = Conexao
+    UpdateOptions.UpdateTableName = 'dbpetshop.pet'
+    TableName = 'dbpetshop.pet'
+    Left = 168
+    Top = 120
+    object PetPet_Codigo: TIntegerField
+      FieldName = 'Pet_Codigo'
+      Origin = 'Pet_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object PetPet_Nome: TStringField
+      FieldName = 'Pet_Nome'
+      Origin = 'Pet_Nome'
+      Required = True
+    end
+    object PetPet_Apelido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Apelido'
+      Origin = 'Pet_Apelido'
+      Size = 10
+    end
+    object PetPet_Especie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Especie'
+      Origin = 'Pet_Especie'
+      Size = 15
+    end
+    object PetPet_Raca: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Raca'
+      Origin = 'Pet_Raca'
+    end
+    object PetPet_Admissao: TDateField
+      FieldName = 'Pet_Admissao'
+      Origin = 'Pet_Admissao'
+      Required = True
+    end
+    object PetPet_Cor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Cor'
+      Origin = 'Pet_Cor'
+    end
+    object PetPet_Sexo: TStringField
+      FieldName = 'Pet_Sexo'
+      Origin = 'Pet_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Porte: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Porte'
+      Origin = 'Pet_Porte'
+      Size = 15
+    end
+    object PetPet_Vacina: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Vacina'
+      Origin = 'Pet_Vacina'
+      Size = 30
+    end
+    object PetPet_Pelagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pelagem'
+      Origin = 'Pet_Pelagem'
+    end
+    object PetPet_Detalhes: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Detalhes'
+      Origin = 'Pet_Detalhes'
+      BlobType = ftMemo
+    end
+    object PetPet_Alergia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Alergia'
+      Origin = 'Pet_Alergia'
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Deficiencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Deficiencia'
+      Origin = 'Pet_Deficiencia'
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Pedigree: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pedigree'
+      Origin = 'Pet_Pedigree'
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Foto'
+      Origin = 'Pet_Foto'
+      Size = 200
+    end
+    object PetPet_Peso: TSingleField
+      FieldName = 'Pet_Peso'
+      Origin = 'Pet_Peso'
+      Required = True
+    end
+    object PetClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      Required = True
+    end
+    object PetClie_Nome: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Clie_Nome'
+      LookupDataSet = tbCliente
+      LookupKeyFields = 'Clie_Codigo'
+      LookupResultField = 'Clie_Nome'
+      KeyFields = 'Clie_Codigo'
+      Size = 30
+      Lookup = True
+    end
+    object PetClie_CPF: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Clie_CPF'
+      LookupDataSet = tbCliente
+      LookupKeyFields = 'Clie_Codigo'
+      LookupResultField = 'Clie_CPF'
+      KeyFields = 'Clie_Codigo'
+      EditMask = '000.000.000-00;0;_'
+      Lookup = True
+    end
+  end
+  object DSPet: TDataSource
+    DataSet = Pet
+    Left = 168
+    Top = 192
+  end
+  object QueryCliente: TFDQuery
+    Active = True
+    Connection = Conexao
+    SQL.Strings = (
+      'Select * from Cliente')
+    Left = 40
+    Top = 312
+    object QueryClienteClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryClienteClie_Nome: TStringField
+      FieldName = 'Clie_Nome'
+      Origin = 'Clie_Nome'
+      Required = True
+      Size = 40
+    end
+    object QueryClienteClie_Admissao: TDateField
+      FieldName = 'Clie_Admissao'
+      Origin = 'Clie_Admissao'
+      Required = True
+    end
+    object QueryClienteClie_Nascm: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nascm'
+      Origin = 'Clie_Nascm'
+    end
+    object QueryClienteClie_Sexo: TStringField
+      FieldName = 'Clie_Sexo'
+      Origin = 'Clie_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryClienteClie_Endereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Endereco'
+      Origin = 'Clie_Endereco'
+      Size = 40
+    end
+    object QueryClienteClie_NumEnd: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_NumEnd'
+      Origin = 'Clie_NumEnd'
+      Size = 5
+    end
+    object QueryClienteClie_Bairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Bairro'
+      Origin = 'Clie_Bairro'
+      Size = 30
+    end
+    object QueryClienteClie_Cidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Cidade'
+      Origin = 'Clie_Cidade'
+      Size = 30
+    end
+    object QueryClienteClie_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_UF'
+      Origin = 'Clie_UF'
+      FixedChar = True
+      Size = 2
+    end
+    object QueryClienteClie_Pais: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Pais'
+      Origin = 'Clie_Pais'
+      Size = 25
+    end
+    object QueryClienteClie_Email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Email'
+      Origin = 'Clie_Email'
+      Size = 40
+    end
+    object QueryClienteClie_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Foto'
+      Origin = 'Clie_Foto'
+      Size = 200
+    end
+    object QueryClienteClie_Celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Celular'
+      Origin = 'Clie_Celular'
+      FixedChar = True
+      Size = 11
+    end
+    object QueryClienteClie_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_CPF'
+      Origin = 'Clie_CPF'
+      FixedChar = True
+      Size = 11
+    end
+  end
+  object QueryPet: TFDQuery
+    IndexFieldNames = 'MAX(Pet_Codigo + 1)'
+    DetailFields = 'MAX(Pet_Codigo + 1)'
+    Connection = Conexao
+    SQL.Strings = (
+      'Select MAX(Pet_Codigo + 1) from Pet')
+    Left = 168
+    Top = 248
+    object QueryPetMAXPet_Codigo1: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAX(Pet_Codigo + 1)'
+      Origin = '`MAX(Pet_Codigo + 1)`'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QueryCodigo: TFDQuery
+    IndexFieldNames = 'MAX(Clie_Codigo + 1)'
+    DetailFields = 'MAX(Clie_Codigo + 1)'
+    Connection = Conexao
+    SQL.Strings = (
+      'Select MAX(Clie_codigo + 1) from Cliente')
+    Left = 40
+    Top = 248
+  end
+  object QueryGrid: TFDQuery
+    Active = True
+    MasterSource = DSCliente
+    Connection = Conexao
+    SQL.Strings = (
+      'Select *, Cliente.Clie_Nome, Cliente.Clie_CPF'
+      'FROM pet'
+      'INNER Join Cliente '
+      'ON Pet.Clie_Codigo = Cliente.Clie_Codigo '
+      'WHERE pet.Clie_Codigo')
+    Left = 240
+    Top = 248
+    object QueryGridPet_Codigo: TIntegerField
+      FieldName = 'Pet_Codigo'
+      Origin = 'Pet_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryGridPet_Nome: TStringField
+      FieldName = 'Pet_Nome'
+      Origin = 'Pet_Nome'
+      Required = True
+    end
+    object QueryGridPet_Apelido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Apelido'
+      Origin = 'Pet_Apelido'
+      Size = 10
+    end
+    object QueryGridPet_Especie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Especie'
+      Origin = 'Pet_Especie'
+      Size = 15
+    end
+    object QueryGridPet_Raca: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Raca'
+      Origin = 'Pet_Raca'
+    end
+    object QueryGridPet_Admissao: TDateField
+      FieldName = 'Pet_Admissao'
+      Origin = 'Pet_Admissao'
+      Required = True
+    end
+    object QueryGridPet_Cor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Cor'
+      Origin = 'Pet_Cor'
+    end
+    object QueryGridPet_Sexo: TStringField
+      FieldName = 'Pet_Sexo'
+      Origin = 'Pet_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Porte: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Porte'
+      Origin = 'Pet_Porte'
+      Size = 15
+    end
+    object QueryGridPet_Peso: TSingleField
+      FieldName = 'Pet_Peso'
+      Origin = 'Pet_Peso'
+      Required = True
+    end
+    object QueryGridPet_Vacina: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Vacina'
+      Origin = 'Pet_Vacina'
+      Size = 30
+    end
+    object QueryGridPet_Pelagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pelagem'
+      Origin = 'Pet_Pelagem'
+    end
+    object QueryGridPet_Detalhes: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Detalhes'
+      Origin = 'Pet_Detalhes'
+      BlobType = ftMemo
+    end
+    object QueryGridPet_Alergia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Alergia'
+      Origin = 'Pet_Alergia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Deficiencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Deficiencia'
+      Origin = 'Pet_Deficiencia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Pedigree: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pedigree'
+      Origin = 'Pet_Pedigree'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Foto'
+      Origin = 'Pet_Foto'
+      Size = 200
+    end
+    object QueryGridClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      Required = True
+    end
+    object QueryGridClie_Nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nome'
+      KeyFields = 'Clie_Nome'
+      Origin = 'Clie_Nome'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryGridClie_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_CPF'
+      Origin = 'Clie_CPF'
+      ProviderFlags = []
+      ReadOnly = True
+      EditMask = '000.000.000-00;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object QueryGridClie_Admissao: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Admissao'
+      Origin = 'Clie_Admissao'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryGridClie_Celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Celular'
+      Origin = 'Clie_Celular'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 11
+    end
+    object QueryGridClie_Nascm: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nascm'
+      Origin = 'Clie_Nascm'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryGridClie_Sexo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Sexo'
+      Origin = 'Clie_Sexo'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridClie_Endereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Endereco'
+      Origin = 'Clie_Endereco'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryGridClie_NumEnd: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_NumEnd'
+      Origin = 'Clie_NumEnd'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object QueryGridClie_Bairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Bairro'
+      Origin = 'Clie_Bairro'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object QueryGridClie_Cidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Cidade'
+      Origin = 'Clie_Cidade'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object QueryGridClie_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_UF'
+      Origin = 'Clie_UF'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 2
+    end
+    object QueryGridClie_Pais: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Pais'
+      Origin = 'Clie_Pais'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
+    end
+    object QueryGridClie_Email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Email'
+      Origin = 'Clie_Email'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryGridClie_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Foto'
+      Origin = 'Clie_Foto'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+  end
+  object dsGrid: TDataSource
+    DataSet = QueryGrid
+    Left = 240
+    Top = 192
+  end
+  object QueryUser: TFDQuery
+    Connection = Conexao
+    Left = 104
+    Top = 248
+  end
+  object Usuario: TFDTable
+    IndexFieldNames = 'User_Cod'
+    Connection = Conexao
+    UpdateOptions.UpdateTableName = 'dbpetshop.usuario'
+    TableName = 'dbpetshop.usuario'
+    Left = 96
+    Top = 120
+    object UsuarioUser_Cod: TIntegerField
+      FieldName = 'User_Cod'
+      Origin = 'User_Cod'
+      Required = True
+    end
+    object UsuarioUser_Name: TStringField
+      FieldName = 'User_Name'
+      Origin = 'User_Name'
+      Required = True
+      Size = 15
+    end
+    object UsuarioUser_Pass: TStringField
+      FieldName = 'User_Pass'
+      Origin = 'User_Pass'
+      Required = True
+      Size = 15
+    end
+  end
+  object frxReport1: TfrxReport
+    Version = '6.2.1'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44065.241160509300000000
+    ReportOptions.LastChange = 44065.269565925930000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 336
+    Top = 184
+    Datasets = <
+      item
+        DataSet = frxRelatorioAmbos
+        DataSetName = 'frxRelatorioAmbos'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Style = fsDash
+      Frame.Typ = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 128.504020000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Shape1: TfrxShapeView
+          AllowVectorExport = True
+          Left = 9.239660000000000000
+          Top = 34.015770000000000000
+          Width = 699.213050000000000000
+          Height = 34.015770000000000000
+          Fill.BackColor = clBlack
+          Fill.ForeColor = clRed
+          Fill.Style = bsClear
+          Frame.Color = 10218495
+          Frame.Typ = []
+          Frame.Width = 1.500000000000000000
+        end
+        object Shape2: TfrxShapeView
+          AllowVectorExport = True
+          Left = 9.239660000000000000
+          Top = 34.015770000000000000
+          Width = 699.213050000000000000
+          Height = 34.015770000000000000
+          Frame.Typ = []
+        end
+        object Memo3: TfrxMemoView
+          Align = baCenter
+          AllowVectorExport = True
+          Left = 287.244280000000000000
+          Top = 41.574830000000000000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Relat'#243'rio PetShop')
+          ParentFont = False
+        end
+        object Date: TfrxMemoView
+          IndexTag = 1
+          Align = baRight
+          AllowVectorExport = True
+          Left = 638.740570000000000000
+          Top = 3.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Date]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Top = 3.779530000000000000
+          Width = 638.740570000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Karev, PetShop.INC')
+          ParentFont = False
+        end
+        object Line7: TfrxLineView
+          AllowVectorExport = True
+          Left = 1061.629600000000000000
+          Top = 702.992580000000000000
+          Height = 26.456710000000000000
+          Color = clBlack
+          Frame.Typ = [ftLeft]
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 158.740260000000000000
+        Top = 207.874150000000000000
+        Width = 718.110700000000000000
+        DataSet = frxRelatorioAmbos
+        DataSetName = 'frxRelatorioAmbos'
+        RowCount = 0
+        object frxRelatorioAmbosClie_Codigo: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 22.677180000000000000
+          Width = 22.677180000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_Codigo'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_Codigo"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosClie_Nome: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 26.456710000000000000
+          Top = 22.677180000000000000
+          Width = 162.519790000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_Nome'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_Nome"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Codigo: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 75.590600000000000000
+          Width = 22.677180000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Codigo'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Codigo"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Nome: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 26.456710000000000000
+          Top = 75.590600000000000000
+          Width = 162.519790000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Nome'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Nome"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Sexo: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 188.976500000000000000
+          Top = 75.590600000000000000
+          Width = 22.677180000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Sexo'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Sexo"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosClie_Sexo: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 188.976500000000000000
+          Top = 22.677180000000000000
+          Width = 22.677180000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_Sexo'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_Sexo"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosClie_CPF: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 211.653680000000000000
+          Top = 22.677180000000000000
+          Width = 109.606370000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_CPF'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_CPF"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosClie_Celular: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 321.260050000000000000
+          Top = 22.677180000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_Celular'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_Celular"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosClie_Admissao: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 634.961040000000000000
+          Top = 22.677180000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_Admissao'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_Admissao"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Especie: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 211.653680000000000000
+          Top = 75.590600000000000000
+          Width = 109.606370000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Especie'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Especie"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Raca: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 321.260050000000000000
+          Top = 75.590600000000000000
+          Width = 139.842610000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Raca'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Raca"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Porte: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 461.102660000000000000
+          Top = 75.590600000000000000
+          Width = 117.165430000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Porte'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Porte"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Peso: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 578.268090000000000000
+          Top = 75.590600000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Peso'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Peso"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosPet_Admissao: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 634.961040000000000000
+          Top = 75.590600000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'Pet_Admissao'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Pet_Admissao"]')
+          ParentFont = False
+        end
+        object frxRelatorioAmbosClie_Email: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 434.645950000000000000
+          Top = 22.677180000000000000
+          Width = 200.315090000000000000
+          Height = 18.897650000000000000
+          DataField = 'Clie_Email'
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxRelatorioAmbos."Clie_Email"]')
+          ParentFont = False
+        end
+        object Memo1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Width = 30.236240000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'C'#243'd')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 34.015770000000000000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Nome')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 238.110390000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'CPF')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 321.260050000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Celular')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 634.961040000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Entrada')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 430.866420000000000000
+          Width = 200.315090000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Email')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 166.299320000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Sexo')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Top = 52.913420000000000000
+          Width = 30.236240000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'C'#243'd')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 34.015770000000000000
+          Top = 52.913420000000000000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Nome')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 238.110390000000000000
+          Top = 52.913420000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Esp'#233'cie')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 321.260050000000000000
+          Top = 52.913420000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Ra'#231'a')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 634.961040000000000000
+          Top = 52.913420000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Entrada')
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 449.764070000000000000
+          Top = 52.913420000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Porte')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 166.299320000000000000
+          Top = 52.913420000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Sexo')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 544.252320000000000000
+          Top = 52.913420000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          DataSet = frxRelatorioAmbos
+          DataSetName = 'frxRelatorioAmbos'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Peso')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Top = 117.165430000000000000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Style = fsDot
+          Frame.Typ = [ftTop]
+          Frame.Width = 3.000000000000000000
+        end
+      end
+    end
+  end
+  object frxRelatorioCliente: TfrxDBDataset
+    UserName = 'frxRelatorioCliente'
+    CloseDataSource = False
+    DataSet = tbCliente
+    BCDToCurrency = False
+    Left = 336
+    Top = 256
+  end
+  object QueryRelatorio: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'Select *, Cliente.Clie_Nome, Cliente.Clie_CPF'
+      'FROM pet'
+      'INNER Join Cliente '
+      'ON Pet.Clie_Codigo = Cliente.Clie_Codigo '
+      'WHERE pet.Clie_Codigo')
+    Left = 336
+    Top = 376
+    object QueryRelatorioPet_Codigo: TIntegerField
+      FieldName = 'Pet_Codigo'
+      Origin = 'Pet_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryRelatorioPet_Nome: TStringField
+      FieldName = 'Pet_Nome'
+      Origin = 'Pet_Nome'
+      Required = True
+    end
+    object QueryRelatorioPet_Apelido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Apelido'
+      Origin = 'Pet_Apelido'
+      Size = 10
+    end
+    object QueryRelatorioPet_Especie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Especie'
+      Origin = 'Pet_Especie'
+      Size = 15
+    end
+    object QueryRelatorioPet_Raca: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Raca'
+      Origin = 'Pet_Raca'
+    end
+    object QueryRelatorioPet_Admissao: TDateField
+      FieldName = 'Pet_Admissao'
+      Origin = 'Pet_Admissao'
+      Required = True
+    end
+    object QueryRelatorioPet_Cor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Cor'
+      Origin = 'Pet_Cor'
+    end
+    object QueryRelatorioPet_Sexo: TStringField
+      FieldName = 'Pet_Sexo'
+      Origin = 'Pet_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryRelatorioPet_Porte: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Porte'
+      Origin = 'Pet_Porte'
+      Size = 15
+    end
+    object QueryRelatorioPet_Peso: TSingleField
+      FieldName = 'Pet_Peso'
+      Origin = 'Pet_Peso'
+      Required = True
+    end
+    object QueryRelatorioPet_Vacina: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Vacina'
+      Origin = 'Pet_Vacina'
+      Size = 30
+    end
+    object QueryRelatorioPet_Pelagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pelagem'
+      Origin = 'Pet_Pelagem'
+    end
+    object QueryRelatorioPet_Detalhes: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Detalhes'
+      Origin = 'Pet_Detalhes'
+      BlobType = ftMemo
+    end
+    object QueryRelatorioPet_Alergia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Alergia'
+      Origin = 'Pet_Alergia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryRelatorioPet_Deficiencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Deficiencia'
+      Origin = 'Pet_Deficiencia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryRelatorioPet_Pedigree: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pedigree'
+      Origin = 'Pet_Pedigree'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryRelatorioPet_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Foto'
+      Origin = 'Pet_Foto'
+      Size = 200
+    end
+    object QueryRelatorioClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      Required = True
+    end
+    object QueryRelatorioClie_Nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nome'
+      Origin = 'Clie_Nome'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryRelatorioClie_Admissao: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Admissao'
+      Origin = 'Clie_Admissao'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryRelatorioClie_Celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Celular'
+      Origin = 'Clie_Celular'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 11
+    end
+    object QueryRelatorioClie_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_CPF'
+      Origin = 'Clie_CPF'
+      ProviderFlags = []
+      ReadOnly = True
+      EditMask = '000.000.000-00;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object QueryRelatorioClie_Nascm: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nascm'
+      Origin = 'Clie_Nascm'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryRelatorioClie_Sexo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Sexo'
+      Origin = 'Clie_Sexo'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryRelatorioClie_Endereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Endereco'
+      Origin = 'Clie_Endereco'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryRelatorioClie_NumEnd: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_NumEnd'
+      Origin = 'Clie_NumEnd'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object QueryRelatorioClie_Bairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Bairro'
+      Origin = 'Clie_Bairro'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object QueryRelatorioClie_Cidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Cidade'
+      Origin = 'Clie_Cidade'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object QueryRelatorioClie_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_UF'
+      Origin = 'Clie_UF'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 2
+    end
+    object QueryRelatorioClie_Pais: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Pais'
+      Origin = 'Clie_Pais'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
+    end
+    object QueryRelatorioClie_Email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Email'
+      Origin = 'Clie_Email'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryRelatorioClie_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Foto'
+      Origin = 'Clie_Foto'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+  end
+  object frxRelatorioPet: TfrxDBDataset
+    UserName = 'frxRelatorioPet'
+    CloseDataSource = False
+    DataSet = Pet
+    BCDToCurrency = False
+    Left = 336
+    Top = 320
+  end
+  object frxRelatorioAmbos: TfrxDBDataset
+    UserName = 'frxRelatorioAmbos'
+    CloseDataSource = False
+    DataSet = QueryGrid
+    BCDToCurrency = False
+    Left = 424
+    Top = 256
+  end
+end

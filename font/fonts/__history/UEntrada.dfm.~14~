@@ -1,0 +1,116 @@
+object frmEntrada: TfrmEntrada
+  Left = 0
+  Top = 0
+  Caption = 'Entrada'
+  ClientHeight = 461
+  ClientWidth = 896
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PaintBox1: TPaintBox
+    Left = 0
+    Top = 0
+    Width = 896
+    Height = 461
+    Align = alClient
+    OnPaint = PaintBox1Paint
+    ExplicitLeft = 40
+    ExplicitTop = 8
+  end
+  object lbRegistro: TLabel
+    Left = 21
+    Top = 34
+    Width = 56
+    Height = 16
+    Caption = 'Registro:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object lbCodPet: TLabel
+    Left = 91
+    Top = 34
+    Width = 58
+    Height = 16
+    Caption = 'C'#243'd. Pet:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object lbNomePet: TLabel
+    Left = 191
+    Top = 34
+    Width = 66
+    Height = 16
+    Caption = 'Nome Pet:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object lbDataE: TLabel
+    Left = 397
+    Top = 30
+    Width = 106
+    Height = 16
+    Caption = 'Data de Entrada:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object edtRegistro: TDBEdit
+    Left = 21
+    Top = 52
+    Width = 64
+    Height = 21
+    Enabled = False
+    TabOrder = 0
+  end
+  object edtCodPet: TDBEdit
+    Left = 91
+    Top = 52
+    Width = 94
+    Height = 21
+    DataField = 'NomeClie'
+    DataSource = Modulo.DSCliente
+    Enabled = False
+    TabOrder = 1
+  end
+  object edtNomePet: TDBEdit
+    Left = 191
+    Top = 52
+    Width = 186
+    Height = 21
+    DataField = 'NomeClie'
+    DataSource = Modulo.DSCliente
+    Enabled = False
+    TabOrder = 2
+  end
+  object edtDataE: TDBEdit
+    Left = 397
+    Top = 52
+    Width = 106
+    Height = 21
+    Enabled = False
+    TabOrder = 3
+  end
+end

@@ -1,0 +1,568 @@
+object Modulo: TModulo
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 495
+  Width = 846
+  object FDWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 40
+    Top = 32
+  end
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'Database=dbpetshop'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 104
+  end
+  object FMDriver: TFDPhysMySQLDriverLink
+    Left = 40
+    Top = 168
+  end
+  object tbCliente: TFDTable
+    IndexFieldNames = 'Clie_Codigo'
+    Connection = Conexao
+    UpdateOptions.UpdateTableName = 'dbpetshop.cliente'
+    TableName = 'dbpetshop.cliente'
+    Left = 40
+    Top = 240
+    object tbClienteClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object tbClienteClie_Nome: TStringField
+      FieldName = 'Clie_Nome'
+      Origin = 'Clie_Nome'
+      Required = True
+      Size = 40
+    end
+    object tbClienteClie_Admissao: TDateField
+      FieldName = 'Clie_Admissao'
+      Origin = 'Clie_Admissao'
+      Required = True
+    end
+    object tbClienteClie_Celular: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Celular'
+      Origin = 'Clie_Celular'
+    end
+    object tbClienteClie_Nascm: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nascm'
+      Origin = 'Clie_Nascm'
+    end
+    object tbClienteClie_Sexo: TStringField
+      FieldName = 'Clie_Sexo'
+      Origin = 'Clie_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object tbClienteClie_Endereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Endereco'
+      Origin = 'Clie_Endereco'
+      Size = 40
+    end
+    object tbClienteClie_NumEnd: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_NumEnd'
+      Origin = 'Clie_NumEnd'
+      Size = 5
+    end
+    object tbClienteClie_Bairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Bairro'
+      Origin = 'Clie_Bairro'
+      Size = 30
+    end
+    object tbClienteClie_Cidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Cidade'
+      Origin = 'Clie_Cidade'
+      Size = 30
+    end
+    object tbClienteClie_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_UF'
+      Origin = 'Clie_UF'
+      FixedChar = True
+      Size = 2
+    end
+    object tbClienteClie_Pais: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Pais'
+      Origin = 'Clie_Pais'
+      Size = 25
+    end
+    object tbClienteClie_Email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Email'
+      Origin = 'Clie_Email'
+      Size = 40
+    end
+    object tbClienteClie_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Foto'
+      Origin = 'Clie_Foto'
+      Size = 200
+    end
+    object tbClienteClie_CPF: TStringField
+      FieldName = 'Clie_CPF'
+      Origin = 'Clie_CPF'
+      Required = True
+      FixedChar = True
+      Size = 12
+    end
+  end
+  object DSCliente: TDataSource
+    DataSet = tbCliente
+    Left = 40
+    Top = 312
+  end
+  object DSUsuario: TDataSource
+    AutoEdit = False
+    DataSet = Usuario
+    Left = 104
+    Top = 312
+  end
+  object Pet: TFDTable
+    IndexFieldNames = 'Pet_Codigo'
+    DetailFields = 'Pet_Codigo'
+    Connection = Conexao
+    UpdateOptions.UpdateTableName = 'dbpetshop.pet'
+    TableName = 'dbpetshop.pet'
+    Left = 168
+    Top = 240
+    object PetPet_Codigo: TIntegerField
+      FieldName = 'Pet_Codigo'
+      Origin = 'Pet_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object PetPet_Nome: TStringField
+      FieldName = 'Pet_Nome'
+      Origin = 'Pet_Nome'
+      Required = True
+    end
+    object PetPet_Apelido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Apelido'
+      Origin = 'Pet_Apelido'
+      Size = 10
+    end
+    object PetPet_Especie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Especie'
+      Origin = 'Pet_Especie'
+      Size = 15
+    end
+    object PetPet_Raca: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Raca'
+      Origin = 'Pet_Raca'
+    end
+    object PetPet_Admissao: TDateField
+      FieldName = 'Pet_Admissao'
+      Origin = 'Pet_Admissao'
+      Required = True
+    end
+    object PetPet_Cor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Cor'
+      Origin = 'Pet_Cor'
+    end
+    object PetPet_Sexo: TStringField
+      FieldName = 'Pet_Sexo'
+      Origin = 'Pet_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Porte: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Porte'
+      Origin = 'Pet_Porte'
+      Size = 15
+    end
+    object PetPet_Vacina: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Vacina'
+      Origin = 'Pet_Vacina'
+      Size = 30
+    end
+    object PetPet_Pelagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pelagem'
+      Origin = 'Pet_Pelagem'
+    end
+    object PetPet_Detalhes: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Detalhes'
+      Origin = 'Pet_Detalhes'
+      BlobType = ftMemo
+    end
+    object PetPet_Alergia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Alergia'
+      Origin = 'Pet_Alergia'
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Deficiencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Deficiencia'
+      Origin = 'Pet_Deficiencia'
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Pedigree: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pedigree'
+      Origin = 'Pet_Pedigree'
+      FixedChar = True
+      Size = 1
+    end
+    object PetPet_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Foto'
+      Origin = 'Pet_Foto'
+      Size = 200
+    end
+    object PetPet_Peso: TSingleField
+      FieldName = 'Pet_Peso'
+      Origin = 'Pet_Peso'
+      Required = True
+    end
+    object PetClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      Required = True
+    end
+    object PetClie_Nome: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Clie_Nome'
+      LookupDataSet = tbCliente
+      LookupKeyFields = 'Clie_Codigo'
+      LookupResultField = 'Clie_Nome'
+      KeyFields = 'Clie_Codigo'
+      Size = 30
+      Lookup = True
+    end
+  end
+  object DSPet: TDataSource
+    DataSet = Pet
+    Left = 168
+    Top = 312
+  end
+  object Query: TFDQuery
+    Active = True
+    Connection = Conexao
+    SQL.Strings = (
+      'Select * from pet')
+    Left = 264
+    Top = 432
+    object QueryPet_Codigo: TIntegerField
+      FieldName = 'Pet_Codigo'
+      Origin = 'Pet_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryPet_Nome: TStringField
+      FieldName = 'Pet_Nome'
+      Origin = 'Pet_Nome'
+      Required = True
+    end
+    object QueryPet_Apelido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Apelido'
+      Origin = 'Pet_Apelido'
+      Size = 10
+    end
+    object QueryPet_Especie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Especie'
+      Origin = 'Pet_Especie'
+      Size = 15
+    end
+    object QueryPet_Raca: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Raca'
+      Origin = 'Pet_Raca'
+    end
+    object QueryPet_Admissao: TDateField
+      FieldName = 'Pet_Admissao'
+      Origin = 'Pet_Admissao'
+      Required = True
+    end
+    object QueryPet_Cor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Cor'
+      Origin = 'Pet_Cor'
+    end
+    object QueryPet_Sexo: TStringField
+      FieldName = 'Pet_Sexo'
+      Origin = 'Pet_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryPet_Porte: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Porte'
+      Origin = 'Pet_Porte'
+      Size = 15
+    end
+    object QueryPet_Peso: TSingleField
+      FieldName = 'Pet_Peso'
+      Origin = 'Pet_Peso'
+      Required = True
+    end
+    object QueryPet_Vacina: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Vacina'
+      Origin = 'Pet_Vacina'
+      Size = 30
+    end
+    object QueryPet_Pelagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pelagem'
+      Origin = 'Pet_Pelagem'
+    end
+    object QueryPet_Detalhes: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Detalhes'
+      Origin = 'Pet_Detalhes'
+      BlobType = ftMemo
+    end
+    object QueryPet_Alergia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Alergia'
+      Origin = 'Pet_Alergia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryPet_Deficiencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Deficiencia'
+      Origin = 'Pet_Deficiencia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryPet_Pedigree: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pedigree'
+      Origin = 'Pet_Pedigree'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryPet_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Foto'
+      Origin = 'Pet_Foto'
+      Size = 200
+    end
+  end
+  object QueryPet: TFDQuery
+    IndexFieldNames = 'MAX(Pet_Codigo + 1)'
+    DetailFields = 'MAX(Pet_Codigo + 1)'
+    Connection = Conexao
+    SQL.Strings = (
+      'Select MAX(Pet_Codigo + 1) from Pet')
+    Left = 168
+    Top = 368
+    object QueryPetMAXPet_Codigo1: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAX(Pet_Codigo + 1)'
+      Origin = '`MAX(Pet_Codigo + 1)`'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QueryCodigo: TFDQuery
+    IndexFieldNames = 'MAX(Clie_Codigo + 1)'
+    DetailFields = 'MAX(Clie_Codigo + 1)'
+    Connection = Conexao
+    SQL.Strings = (
+      'Select MAX(Clie_codigo + 1) from Cliente')
+    Left = 40
+    Top = 368
+  end
+  object QueryGrid: TFDQuery
+    MasterSource = DSCliente
+    Connection = Conexao
+    SQL.Strings = (
+      'Select *, Cliente.Clie_Nome, Cliente.Clie_CPF'
+      'FROM pet'
+      'INNER Join Cliente '
+      'ON Pet.Clie_Codigo = Cliente.Clie_Codigo '
+      'WHERE pet.Clie_Codigo')
+    Left = 264
+    Top = 376
+    object QueryGridPet_Codigo: TIntegerField
+      FieldName = 'Pet_Codigo'
+      Origin = 'Pet_Codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryGridPet_Nome: TStringField
+      FieldName = 'Pet_Nome'
+      Origin = 'Pet_Nome'
+      Required = True
+    end
+    object QueryGridPet_Apelido: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Apelido'
+      Origin = 'Pet_Apelido'
+      Size = 10
+    end
+    object QueryGridPet_Especie: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Especie'
+      Origin = 'Pet_Especie'
+      Size = 15
+    end
+    object QueryGridPet_Raca: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Raca'
+      Origin = 'Pet_Raca'
+    end
+    object QueryGridPet_Admissao: TDateField
+      FieldName = 'Pet_Admissao'
+      Origin = 'Pet_Admissao'
+      Required = True
+    end
+    object QueryGridPet_Cor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Cor'
+      Origin = 'Pet_Cor'
+    end
+    object QueryGridPet_Sexo: TStringField
+      FieldName = 'Pet_Sexo'
+      Origin = 'Pet_Sexo'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Porte: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Porte'
+      Origin = 'Pet_Porte'
+      Size = 15
+    end
+    object QueryGridPet_Peso: TSingleField
+      FieldName = 'Pet_Peso'
+      Origin = 'Pet_Peso'
+      Required = True
+    end
+    object QueryGridPet_Vacina: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Vacina'
+      Origin = 'Pet_Vacina'
+      Size = 30
+    end
+    object QueryGridPet_Pelagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pelagem'
+      Origin = 'Pet_Pelagem'
+    end
+    object QueryGridPet_Detalhes: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Detalhes'
+      Origin = 'Pet_Detalhes'
+      BlobType = ftMemo
+    end
+    object QueryGridPet_Alergia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Alergia'
+      Origin = 'Pet_Alergia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Deficiencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Deficiencia'
+      Origin = 'Pet_Deficiencia'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Pedigree: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Pedigree'
+      Origin = 'Pet_Pedigree'
+      FixedChar = True
+      Size = 1
+    end
+    object QueryGridPet_Foto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Pet_Foto'
+      Origin = 'Pet_Foto'
+      Size = 200
+    end
+    object QueryGridClie_Codigo: TIntegerField
+      FieldName = 'Clie_Codigo'
+      Origin = 'Clie_Codigo'
+      Required = True
+    end
+    object QueryGridClie_Nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_Nome'
+      KeyFields = 'Clie_Nome'
+      Origin = 'Clie_Nome'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object QueryGridClie_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Clie_CPF'
+      KeyFields = 'Clie_CPF'
+      Origin = 'Clie_CPF'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 12
+    end
+  end
+  object dsGrid: TDataSource
+    DataSet = QueryGrid
+    Left = 328
+    Top = 376
+  end
+  object QueryUser: TFDQuery
+    Connection = Conexao
+    Left = 96
+    Top = 368
+  end
+  object Usuario: TFDTable
+    Active = True
+    IndexFieldNames = 'User_Cod'
+    Connection = Conexao
+    UpdateOptions.UpdateTableName = 'dbpetshop.usuario'
+    TableName = 'dbpetshop.usuario'
+    Left = 96
+    Top = 240
+    object UsuarioUser_Cod: TIntegerField
+      FieldName = 'User_Cod'
+      Origin = 'User_Cod'
+      Required = True
+    end
+    object UsuarioUser_Name: TStringField
+      FieldName = 'User_Name'
+      Origin = 'User_Name'
+      Required = True
+      Size = 15
+    end
+    object UsuarioUser_Pass: TStringField
+      FieldName = 'User_Pass'
+      Origin = 'User_Pass'
+      Required = True
+      Size = 15
+    end
+  end
+end

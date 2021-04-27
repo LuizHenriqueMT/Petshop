@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/08/06 10:27:53.000.416,=G:\Programacao\Unit1.pas</Transaction>
+    <Transaction>2020/08/06 23:48:40.188,=G:\Programacao\Unit1.pas</Transaction>
+    <Transaction>2020/08/07 00:07:51.855,G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\fonts\UPrincipal.dfm=G:\Programacao\Unit1.dfm</Transaction>
+    <Transaction>2020/08/07 00:07:51.855,G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\fonts\UPrincipal.pas=G:\Programacao\Unit1.pas</Transaction>
+    <Transaction>2020/08/07 00:08:00.214,G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\fonts\PetShop.dproj=G:\Programacao\Project1.dproj</Transaction>
+    <Transaction>2020/08/07 00:40:42.707,G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\UPrincipal.dfm=G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\fonts\UPrincipal.dfm</Transaction>
+    <Transaction>2020/08/07 00:40:42.707,G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\UPrincipal.pas=G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\fonts\UPrincipal.pas</Transaction>
+    <Transaction>2020/08/07 00:44:18.196,G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\SysPetShop.dproj=G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\font\fonts\PetShop.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

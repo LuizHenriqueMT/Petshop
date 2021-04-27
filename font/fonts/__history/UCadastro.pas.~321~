@@ -1,0 +1,905 @@
+unit UCadastro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
+  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Buttons, System.ImageList, Vcl.ImgList,
+  Vcl.ExtDlgs, Vcl.Imaging.pngimage, Data.DB, jpeg, Vcl.CheckLst, Vcl.Grids,
+  Vcl.DBGrids, PngSpeedButton;
+
+type
+  TfrmClientes = class(TForm)
+    pgClientes: TPageControl;
+    Cliente: TTabSheet;
+    edtCodigo: TDBEdit;
+    lbCodigo: TLabel;
+    lbNome: TLabel;
+    edtNomeC: TDBEdit;
+    lbNascimento: TLabel;
+    edtNascC: TDBEdit;
+    lbAdmissao: TLabel;
+    edtAdmissaoC: TDBEdit;
+    edtEndereco: TDBEdit;
+    lbEndereco: TLabel;
+    lbNumEnd: TLabel;
+    edtNumEnd: TDBEdit;
+    lbBairro: TLabel;
+    edtBairro: TDBEdit;
+    lbCPF: TLabel;
+    edtCPF: TDBEdit;
+    lbTelefone: TLabel;
+    edtTelefone: TDBEdit;
+    lbCidade: TLabel;
+    edtCidade: TDBEdit;
+    edtUF: TDBComboBox;
+    lbUF: TLabel;
+    lbPais: TLabel;
+    edtPais: TDBComboBox;
+    btnAdcFoto: TBitBtn;
+    Pet: TTabSheet;
+    paintbox1: TPaintBox;
+    Panel2: TPanel;
+    lbSexo: TLabel;
+    lbEmail: TLabel;
+    edtEmail: TDBEdit;
+    btnAdicionar: TImage;
+    btnAtualizar: TImage;
+    btnSalvar: TImage;
+    btnExcluir: TImage;
+    btnCancelar: TImage;
+    btnFechar: TImage;
+    opdCliente: TOpenPictureDialog;
+    DBNavigator1: TDBNavigator;
+    edtFoto: TDBEdit;
+    PaintBox2: TPaintBox;
+    lbCodigoP: TLabel;
+    lbNomeP: TLabel;
+    edtCodigoPet: TDBEdit;
+    edtNomePet: TDBEdit;
+    edtEspeciePet: TDBEdit;
+    lbEspeciePet: TLabel;
+    lbRacaPet: TLabel;
+    edtRacaPet: TDBEdit;
+    lbPelagemPet: TLabel;
+    cbPelagemPet: TDBComboBox;
+    lbCorPet: TLabel;
+    edtCorPet: TDBEdit;
+    edtApelidoPet: TDBEdit;
+    lbApelidoP: TLabel;
+    edtPesoPet: TDBEdit;
+    lbPesoPet: TLabel;
+    Panel1: TPanel;
+    lbPortePet: TLabel;
+    cbPortePet: TDBComboBox;
+    lbVacinaPet: TLabel;
+    cbVacinaPet: TDBComboBox;
+    edtAdmissaoP: TDBEdit;
+    lbAdmissaoP: TLabel;
+    gpDetalhesP: TGroupBox;
+    memoPet: TDBMemo;
+    btnAdicionarP: TImage;
+    btnAtualizarP: TImage;
+    btnSalvarP: TImage;
+    btnExcluirP: TImage;
+    btnCancelarP: TImage;
+    btnFecharP: TImage;
+    Image7: TImage;
+    DBNavigator2: TDBNavigator;
+    cbSexoCliente: TDBComboBox;
+    cbSexoPet: TDBComboBox;
+    lbSexoPet: TLabel;
+    imgClienteBD: TImage;
+    edtFotoPet: TDBEdit;
+    btnAdicionarFotoP: TBitBtn;
+    imgPetBD: TImage;
+    chbAlergia: TDBCheckBox;
+    chbDeficiencia: TDBCheckBox;
+    chbPedigree: TDBCheckBox;
+    btnAdicionarDetalhe: TBitBtn;
+    edtDetalhes: TEdit;
+    TabSheet1: TTabSheet;
+    PaintBox3: TPaintBox;
+    edtPesquisa: TEdit;
+    btnPesquisa: TBitBtn;
+    Panel3: TPanel;
+    gdPesquisa: TDBGrid;
+    rgPesquisa: TRadioGroup;
+    btnAbrirDados: TBitBtn;
+    Image1: TImage;
+    Label1: TLabel;
+    edtCodigoPD: TDBEdit;
+    edtNomePD: TDBEdit;
+    Label2: TLabel;
+    edtCPFPD: TDBEdit;
+    Label3: TLabel;
+    Image2: TImage;
+    btnRelatorio: TBitBtn;
+    procedure Panel1Enter(Sender: TObject);
+    procedure paintbox1Paint(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnAtualizarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure btnAdcFotoClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure pgClientesChange(Sender: TObject);
+    procedure pgClientesChanging(Sender: TObject; var AllowChange: Boolean);
+    procedure cbSexoClienteChange(Sender: TObject);
+    procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
+    procedure DBNavigator2Click(Sender: TObject; Button: TNavigateBtn);
+    procedure chbAlergiaClick(Sender: TObject);
+    procedure btnAdicionarDetalheClick(Sender: TObject);
+    procedure chbDeficienciaClick(Sender: TObject);
+    procedure chbPedigreeClick(Sender: TObject);
+    procedure btnPesquisaClick(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
+    procedure btnAbrirDadosClick(Sender: TObject);
+    procedure edtPesquisaChange(Sender: TObject);
+  private
+    { Private declarations }
+    procedure ButtonsOFF;
+    procedure ButtonON;
+    procedure AtivarALL (AtivarTab:TTabSheet; Hab:Boolean);
+  public
+    { Public declarations }
+    procedure Foto;
+  end;
+
+var
+  frmClientes: TfrmClientes;
+  edtFoto: TDBEdit;
+  pageControl: TPageControl;
+  DirFoto, Foto: string;
+
+implementation
+
+{$R *.dfm}
+
+uses UDataBase, UPrincipal;
+
+procedure TfrmClientes.FormActivate(Sender: TObject); //Métodos de Inicialização Cadastros
+var  I: integer;
+begin
+      Modulo.Conexao.Connected:= true;
+      modulo.tbCliente.Active:= true;
+      modulo.Pet.Active:= true;
+      //modulo.Query.Active:= true;
+
+      frmclientes.chbAlergia.Checked:= false;
+      frmclientes.chbDeficiencia.Checked:= false;
+      frmclientes.chbPedigree.Checked:= false;
+
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          modulo.tbCliente.Last;
+          if edtFoto.Text <> '' then
+            begin
+              imgClienteBD.Picture.LoadFromFile(edtfoto.Text);
+              imgPetBD.Picture.LoadFromFile(edtfotoPet.Text);
+            end
+          else
+          if edtfoto.Text = '' then
+            exit
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          modulo.Pet.Last;
+          if edtFotoPet.Text <> '' then
+            begin
+              imgClienteBD.Picture.LoadFromFile(edtfoto.Text);
+              imgPetBD.Picture.LoadFromFile(edtfotoPet.Text);
+            end
+          else
+          if edtfotoPet.Text = '' then
+            exit
+        end;
+end;
+
+procedure TfrmClientes.Foto; //Procedure Adicionar Foto
+begin
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          imgClienteBD.Picture.LoadFromFile(edtfoto.Text)
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          imgPetBD.Picture.LoadFromFile(edtfotoPet.Text);
+        end;
+end;
+
+procedure TfrmClientes.Image7Click(Sender: TObject);
+begin
+      if (pgClientes.ActivePageIndex = 0) or (pgClientes.ActivePageIndex = 1) then
+        begin
+          pgClientes.ActivePageIndex:= 2;
+          with modulo.QueryGrid do
+            begin
+              close;
+              sql.clear;
+              sql.add('Select * from Pet');
+              open;
+            end;
+        end;
+      
+end;
+
+procedure TfrmClientes.AtivarALL(AtivarTab: TTabSheet; Hab: Boolean); //Ativar Manipulaçãop edits
+var   Ativador: integer;
+begin
+      if pgClientes.ActivePageIndex = 0 then //Page Cadastro Cliente
+        begin
+          for ativador:= 0 to AtivarTab.ControlCount -1 do
+            if ((AtivarTab.Controls[ativador] is TDBEdit) or
+              (AtivarTab.Controls[ativador] is TDBComboBox)) then
+              begin
+                AtivarTab.Controls[ativador].Enabled:= Hab;
+              end
+            else if edtCodigo.Enabled = true then
+              edtCodigo.Enabled:= false;
+              edtAdmissaoC.Enabled:= false;
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then //Page Cadastro Pet
+        begin
+          for ativador:= 0 to AtivarTab.ControlCount -1 do
+            if ((AtivarTab.Controls[ativador] is TDBEdit) or
+              (AtivarTab.Controls[ativador] is TDBComboBox) or
+              (AtivarTab.Controls[ativador] is TGroupBox) or
+              (AtivarTab.Controls[ativador] is TDBCheckBox)or
+              (AtivarTab.Controls[ativador] is TEdit)) then
+              begin
+                AtivarTab.Controls[ativador].Enabled:= Hab;
+              end
+            else if edtCodigoPet.Enabled = true then
+              edtCodigoPet.Enabled:= false;
+              edtAdmissaoP.Enabled:= false;
+        end;
+end;
+
+procedure TfrmClientes.btnAbrirDadosClick(Sender: TObject);
+var   i, contador: integer;
+      c: string;
+begin
+    with gdPEsquisa.DataSource do
+    if gdPesquisa.SelectedRows.Count > 0 then
+      for i:= 0 to gdPEsquisa.SelectedRows.Count -1 do
+        begin
+           DataSet.GotoBookmark((gdPesquisa.SelectedRows.Items[i]));
+           c := '';
+           c := DataSet.FieldByName('Pet_Codigo').Value;
+        end;
+      with modulo do
+      begin
+        query.close;
+        query.sql.clear;
+        query.sql.add('Select * From Pet Where Pet_Codigo = ' + C);
+        query.open;
+      end;
+end;
+
+procedure TfrmClientes.btnAdcFotoClick(Sender: TObject); //Procedure Adicionar Foto
+var   foto: string;
+begin
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          if opdCliente.Execute then
+            begin
+              edtFoto.Text:= opdCliente.FileName;
+              imgClienteBD.Picture.LoadFromFile(edtFoto.text);
+              modulo.tbCliente.FieldByName('Foto').AsString:= edtfoto.Text;
+            end
+          else
+            exit
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          if opdCliente.Execute then
+            begin
+              edtFotoPet.Text:= opdCliente.FileName;
+              imgPetBD.Picture.LoadFromFile(edtFotoPet.text);
+              modulo.pet.FieldByName('Pet_Foto').AsString:= edtfotoPet.Text;
+            end
+          else
+            exit
+        end
+end;
+
+procedure TfrmClientes.btnAdicionarClick(Sender: TObject); //Adicionar Cadastros
+var   Ativador, CodInc: integer;
+      Fotobranca: string;
+begin
+      FotoBranca:= ('G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\foto\cliente\download.png');
+      if pgClientes.ActivePageIndex = 0 then //Page Cadastro Cliente
+        begin
+          CodInc:= 0;
+          Modulo.tbCliente.Insert;
+          AtivarALL(Cliente,true);
+          modulo.QueryCodigo.Close;
+          modulo.QueryCodigo.SQL.Clear;
+
+          modulo.Querycodigo.SQL.Add('Select MAX(Clie_Codigo + 1) from Cliente'); //Pesquisa para ver ultimo dado registrado AI
+          modulo.Querycodigo.Open();
+          codInc:= modulo.QueryCodigo.Fields[0].Value;
+          modulo.tbClienteClie_Codigo.Value:= (codInc); //Incrementa Codigo Cliente
+
+          ButtonsOFF;
+          edtAdmissaoC.Text:= formatdatetime('dd/mm/yyyy',now);
+          edtNomeC.SetFocus;
+          imgClienteBd.Picture.LoadFromFile(FotoBranca);
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then //Page Cadastro Pet
+        begin
+          codInc:= 0;
+          modulo.Pet.Insert;
+          AtivarALL(Pet,true);
+          with modulo.Querypet do
+            begin
+              Close;
+              SQL.Clear;
+              SQL.Add('Select MAX(Pet_Codigo + 1) from Pet'); //Pesquisa para ver ultimo dado registrado AI
+              Open;
+              codInc:= modulo.Querypet.Fields[0].Value;
+              modulo.PetPet_Codigo.Value:= (codInc); //Incrementa Codigo Pet
+
+              ButtonsOFF;
+              edtAdmissaoP.Text:= formatdatetime('dd/mm/yyyy',now);
+              edtNomePD.SetFocus;
+              btnAdicionarFotoP.Enabled:= true;
+              imgPetBD.Picture.LoadFromFile(FotoBranca);
+            end;
+        end;
+end;
+
+procedure TfrmClientes.btnAdicionarDetalheClick(Sender: TObject); //Adicionar MEMO
+var   cont: Integer;
+      ResultadoText: String;
+begin
+      MemoPet.Lines.Add(edtDetalhes.text);
+      ResultadoText:= memoPet.Lines.Text;
+      edtDetalhes.Text:= '';
+end;
+
+procedure TfrmClientes.btnAtualizarClick(Sender: TObject); //Atualizar
+begin
+      if pgClientes.ActivePageIndex = 0 then  //Page Cadastro Cliente
+        begin
+          Modulo.tbCliente.Edit;
+          ButtonsOFF;
+          AtivarAll(Cliente,true);
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then  //Page Cadastro Pet
+        begin
+          Modulo.pet.Edit;
+          ButtonsOFF;
+          AtivarAll(pet,true);
+        end;
+end;
+
+procedure TfrmClientes.btnCancelarClick(Sender: TObject); //Cancelar
+begin
+      if pgClientes.ActivePageIndex = 0 then //Page Cadastro Cliente
+        begin
+          if modulo.tbCliente.State in [dsInsert,dsEdit] then //Troca de tela Cliente/Pet em edição
+            begin
+              case Application.MessageBox('Deseja salvar o cliente?', 'Salvar', MB_YESNO + MB_ICONEXCLAMATION) of
+                IDYES:
+                  begin
+                    Modulo.tbCliente.post;
+                    Showmessage ('O cliente foi salvo com sucesso!');
+                    exit
+                  end;
+                IDNO:
+                  begin
+                    modulo.tbCliente.Cancel;
+                    AtivarAll(Cliente,false);
+                    ButtonsOFF;
+                    exit
+                  end;
+              end;
+            end;
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then //Page Cadastro Pet
+        begin
+          if modulo.pet.State in [dsInsert,dsEdit] then //Troca de tela Cliente/Pet em edição
+            begin
+              case Application.MessageBox('Deseja salvar o pet?', 'Salvar', MB_YESNO + MB_ICONEXCLAMATION) of
+                IDYES:
+                  begin
+                    Modulo.pet.post;
+                    Showmessage ('O cliente foi salvo com sucesso!');
+                    exit
+                  end;
+                IDNO:
+                  begin
+                    modulo.pet.Cancel;
+                    AtivarAll(pet,false);
+                    ButtonsOFF;
+                    exit
+                  end;
+              end;
+            end;
+        end;
+end;
+
+procedure TfrmClientes.btnExcluirClick(Sender: TObject); //Excluir
+begin
+      if pgClientes.ActivePageIndex = 0 then //Page Cadastro Cliente
+        begin
+          case Application.MessageBox('deseja deletar o cliente?', 'exluir', MB_YESNO + MB_ICONQUESTION) of
+            IDYES:
+              begin
+                Modulo.tbCliente.Delete;
+                messageDlg('O cliente foi excluído com sucesso!',mtconfirmation,[mbok],0);
+              end;
+            IDNO:
+              begin
+                exit
+              end;
+          end;
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then //Page Cadastro Pet
+        begin
+          case Application.MessageBox('deseja deletar o cliente?', 'exluir', MB_YESNO + MB_ICONQUESTION) of
+            IDYES:
+              begin
+                Modulo.Pet.Delete;
+                messageDlg ('O cliente foi excluído com sucesso!',mtconfirmation,[mbok],0);
+              end;
+            IDNO:
+              begin
+                exit
+              end;
+          end;
+        end;
+end;
+
+procedure TfrmClientes.btnFecharClick(Sender: TObject); //Fechar
+begin
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          if Modulo.tbCliente.State in [dsInsert, dsEdit] then
+            begin
+              case Application.MessageBox ('deseja fechar o cadastro de cliente?', 'fechar', MB_YESNO + MB_ICONQUESTION) of
+                IDYES:
+                  begin
+                    frmClientes.free;
+                  end;
+                IDNO:
+                  begin
+                    exit
+                  end;
+              end;
+            end
+          else
+            frmClientes.Free;
+        end
+      else
+
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          if Modulo.pet.State in [dsInsert, dsEdit] then
+            begin
+              case Application.MessageBox ('deseja fechar o cadastro de cliente?', 'fechar', MB_YESNO + MB_ICONQUESTION) of
+                IDYES:
+                  begin
+                    frmClientes.free;
+                  end;
+                IDNO:
+                  begin
+                    exit
+                  end;
+              end;
+            end
+          else
+            frmClientes.Free;
+        end;
+end;
+
+procedure TfrmClientes.btnPesquisaClick(Sender: TObject);
+begin
+          with modulo.QueryGrid do
+            begin
+              close;
+              sql.clear;
+              sql.add('Select *, Cliente.Clie_Codigo, Cliente.Clie_CPF from Pet INNER JOIN CLIENTE ON Pet.Clie_Codigo = Cliente.Clie_Codigo');
+
+              case rgPesquisa.ItemIndex of
+                0:
+                  begin
+                    SQL.Add('Where Pet.Pet_Codigo = :pPet_Codigo');
+                    ParamByName('pPet_Codigo').Value:= edtPesquisa.Text;
+                  end;
+                1:
+                  begin
+                    SQL.Add('Where Pet.Pet_Nome like :pPet_Nome');
+                    ParamByName('pPet_Nome').Value:= '%' + edtPesquisa.Text + '%';
+                  end;
+                2:
+                  begin
+                    SQL.Add('where pet.Clie_Codigo = :pClie_Codigo');
+                    ParamByName('pClie_Codigo').Value:= edtPesquisa.Text;
+                  end;
+                3:
+                  begin
+                    SQL.Add('where Cliente.Clie_CPF = :pClie_CPF');
+                    ParamByName('pClie_CPF').Value:= edtPesquisa.Text;
+                  end;
+              end;
+              open;
+
+              if recordcount = 0 then
+                begin
+                  btnRelatorio.Enabled:= false;
+                  Application.MessageBox ('Não foi encontrado nenhum dado!', 'Aviso', MB_OK + MB_ICONWARNING);
+                end
+              else
+              if recordcount <> 0 then
+                begin
+                  btnRelatorio.Enabled:= true;
+                end;
+            end;
+end;
+
+procedure TfrmClientes.btnSalvarClick(Sender: TObject); //Salvar
+begin
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          ativarall(Cliente, false);
+          Modulo.tbCliente.Post;
+          ButtonsOFF;
+          btnSalvar.Enabled:= false;
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          AtivarAll(Pet, false);
+          Modulo.pet.Post;
+          ButtonsOFF;
+          btnSalvarP.Enabled:= false;
+        end;
+end;
+
+procedure TfrmClientes.ButtonsOFF;  //BotaoOFF
+var  Verif: boolean;
+begin
+      while Verif = true do
+      verif:= true;
+      DirFoto:= ('G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\img\');
+
+      if pgClientes.ActivePageIndex = 0 then //Page Cadastro Cliente
+        begin
+          btnAdicionar.Enabled:= Modulo.tbCliente.State in [dsBrowse];
+          btnExcluir.Enabled:= Modulo.tbCliente.State in [dsBrowse];
+          btnAtualizar.Enabled:= Modulo.tbCliente.State in [dsBrowse];
+          btnSalvar.Enabled:= Modulo.tbCliente.State in [dsInsert, dsEdit];
+          btnCancelar.Enabled:= Modulo.tbCliente.State in [dsInsert, dsEdit];
+          btnAdcFoto.Enabled:= modulo.tbCliente.State in [dsInsert, dsEdit];
+            btnAdicionar.Picture.LoadFromFile(DirFoto + 'AdicionarOFF.png');
+            btnAtualizar.Picture.LoadFromFile(DirFoto + 'AtualizarOFF.png');
+            btnExcluir.Picture.LoadFromFile(DirFoto + 'ExcluirOFF.png');
+          if (btnAdicionar.Enabled = (Modulo.tbCliente.State in [dsBrowse])) then //Ativar Botao Salvar e Cancelar
+            begin
+              if ((btnSalvar.Enabled) and (btnCancelar.Enabled) = true) then
+                begin
+                  btnSalvar.Enabled:= Modulo.tbCliente.State in [dsInsert, dsEdit];
+                  btnSalvar.Picture.LoadFromFile(DirFoto + 'Salvar.png');
+                  btnCancelar.Enabled:= Modulo.tbCliente.State in [dsInsert, dsEdit];
+                  btnCancelar.Picture.LoadFromFile(DirFoto + 'Cancelar.png');
+                end
+              else
+              if ((btnSalvar.Enabled) and (btnCancelar.Enabled) = false) then
+                begin
+                  btnSalvar.Picture.LoadFromFile(DirFoto + 'SalvarOFF.png');
+                  btnCancelar.Picture.LoadFromFile(DirFoto + 'CancelarOFF.png');
+                  ButtonON;
+                end;
+            end;
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then //Page Cadastro Pet
+        begin
+          btnAdicionarP.Enabled:= modulo.Pet.State in [dsBrowse];
+          btnExcluirP.Enabled:= Modulo.pet.State in [dsBrowse];
+          btnAtualizarP.Enabled:= Modulo.pet.State in [dsBrowse];
+          btnSalvarP.Enabled:= Modulo.pet.State in [dsInsert, dsEdit];
+          btnCancelarP.Enabled:= Modulo.pet.State in [dsInsert, dsEdit];
+          btnAdicionarP.Picture.LoadFromFile(DirFoto + 'AdicionarOFF.png');
+          btnAtualizarP.Picture.LoadFromFile(DirFoto + 'AtualizarOFF.png');
+          btnExcluirP.Picture.LoadFromFile(DirFoto + 'ExcluirOFF.png');
+
+          chbAlergia.Checked:= false;
+          chbAlergia.Enabled:= modulo.Pet.State in [dsedit,dsInsert];
+          chbDeficiencia.Checked:= false;
+          chbDeficiencia.Enabled:= modulo.Pet.State in [dsedit,dsInsert];
+          chbPedigree.Checked:= false;
+          chbPedigree.Enabled:= modulo.Pet.State in [dsedit,dsInsert];
+          if (btnAdicionarP.Enabled = (Modulo.pet.State in [dsBrowse])) then //Ativar Botao Salvar e Cancelar
+            begin
+              if ((btnSalvarP.Enabled) and (btnCancelarP.Enabled) = true) then
+                begin
+                  btnSalvarP.Enabled:= Modulo.pet.State in [dsInsert, dsEdit];
+                  btnSalvarP.Picture.LoadFromFile(DirFoto + 'Salvar.png');
+                  btnCancelarP.Enabled:= Modulo.pet.State in [dsInsert, dsEdit];
+                  btnCancelarP.Picture.LoadFromFile(DirFoto + 'Cancelar.png');
+                end
+              else
+              if ((btnSalvarP.Enabled) and (btnCancelarP.Enabled) = false) then
+                begin
+                  btnSalvarP.Picture.LoadFromFile(DirFoto + 'SalvarOFF.png');
+                  btnCancelarP.Picture.LoadFromFile(DirFoto + 'CancelarOFF.png');
+                  ButtonON;
+                end;
+            end;
+        end;
+
+      verif:= false;
+end;
+
+procedure TfrmClientes.cbSexoClienteChange(Sender: TObject); //Selecionar Sexo do Cliente
+begin
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          if cbSexoCliente.ItemIndex = 0 then
+            begin
+              modulo.tbClienteClie_Sexo.AsString:= cbSexoCliente.Items.Strings[0];
+            end
+          else
+          if cbSexoCLiente.ItemIndex = 1 then
+            modulo.tbClienteClie_sexo.AsString:= cbSexoCliente.Items.Strings[1];
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          if cbSexoPet.ItemIndex = 0 then
+            begin
+              modulo.petpet_sexo.AsString:= cbSexoPet.Items.Strings[0];
+            end
+          else
+          if cbSexoPet.ItemIndex = 1 then
+            modulo.petpet_sexo.AsString:= cbSexoPet.Items.Strings[1];
+        end;
+end;
+
+procedure TfrmClientes.chbAlergiaClick(Sender: TObject);
+var   contClick: integer;
+begin
+      if chbAlergia.Checked = true then
+        begin
+          if chbAlergia.ValueChecked = 'S' then
+            begin
+              edtDetalhes.Enabled:= true;
+              btnAdicionarDetalhe.Enabled:= true;
+              edtDetalhes.Text:= '';
+            end
+        end
+      else
+      if chbAlergia.Checked = false then
+        begin
+          if chbalergia.ValueChecked = 'S' then
+            begin
+              edtDetalhes.Enabled:= false;
+              btnAdicionarDetalhe.Enabled:= false;
+              exit;
+            end;
+        end;
+end;
+
+procedure TfrmClientes.chbDeficienciaClick(Sender: TObject);
+begin
+      if chbDeficiencia.Checked = true then
+        begin
+          if chbDeficiencia.ValueChecked = 'S' then
+            begin
+              edtDetalhes.Enabled:= true;
+              btnAdicionarDetalhe.Enabled:= true;
+              edtDetalhes.Text:= '';
+            end
+        end
+      else
+      if chbDeficiencia.Checked = false then
+        begin
+          if chbDeficiencia.ValueChecked = 'S' then
+            begin
+              edtDetalhes.Enabled:= false;
+              btnAdicionarDetalhe.Enabled:= false;
+              memoPet.Lines.Clear;
+              exit;
+            end;
+        end;
+end;
+
+procedure TfrmClientes.chbPedigreeClick(Sender: TObject);
+begin
+      if chbPedigree.Checked = true then
+        begin
+          if chbPedigree.ValueChecked = 'S' then
+            begin
+              edtDetalhes.Enabled:= true;
+              btnAdicionarDetalhe.Enabled:= true;
+              edtDetalhes.Text:= '';
+            end
+        end
+      else
+      if chbPedigree.Checked = false then
+        begin
+          if chbPedigree.ValueChecked = 'S' then
+            begin
+              edtDetalhes.Enabled:= false;
+              btnAdicionarDetalhe.Enabled:= false;
+              memoPet.Lines.Clear;
+              exit;
+            end;
+        end;
+end;
+
+procedure TfrmClientes.DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
+begin
+      if (frmClientes.edtFoto.text <> '') then
+        begin
+          frmClientes.Foto;
+        end
+      else
+      if edtFoto.Text = '' then
+        imgClienteBD.Picture.LoadFromFile('G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\foto\cliente\download.png');
+        exit
+end;
+
+procedure TfrmClientes.DBNavigator2Click(Sender: TObject; Button: TNavigateBtn);
+begin
+      if (frmClientes.edtFotoPet.text <> '') then
+        begin
+          frmClientes.Foto;
+        end
+      else
+      if edtFotoPet.Text = '' then
+        imgPetBD.Picture.LoadFromFile('G:\Programacao\DesenvolvimentoAplicativos\SysPetShop\foto\cliente\download.png');
+        exit
+end;
+
+procedure TfrmClientes.edtPesquisaChange(Sender: TObject);
+begin
+      if edtPesquisa.Text <> '' then
+        begin
+          btnAbrirdados.Caption:= 'Abrir Dados';
+        end
+      else
+      if edtPesquisa.Text = '' then
+        begin
+          btnAbrirDados.Caption:= 'Abrir Todos';
+        end;
+end;
+
+procedure TfrmClientes.ButtonON; //ButtonsON
+begin
+      if pgClientes.ActivePageIndex = 0 then
+        begin
+          btnAdicionar.Enabled:= (modulo.tbCliente.State in [dsBrowse]);
+          btnExcluir.Enabled:= Modulo.tbCliente.State in [dsBrowse];
+          btnAtualizar.Enabled:= Modulo.tbCliente.State in [dsBrowse];
+          btnSalvar.Enabled:= Modulo.tbCliente.State in [dsInsert, dsEdit];
+          btnCancelar.Enabled:= Modulo.tbCliente.State in [dsInsert, dsEdit];
+
+          btnAdicionar.Picture.LoadFromFile(DirFoto + 'Adicionar.png');
+          btnAtualizar.Picture.LoadFromFile(DirFoto + 'Atualizar.png');
+          btnExcluir.Picture.LoadFromFile(DirFoto + 'Excluir.png');
+          btnAtualizar.Enabled:= true;
+          btnAdicionar.Enabled:= true;
+          btnSalvar.Enabled:= false;
+          btnCancelar.Enabled:= false;
+          btnFechar.Enabled:= true;
+        end
+      else
+      if pgClientes.ActivePageIndex = 1 then
+        begin
+          btnAdicionarP.Enabled:= (modulo.pet.State in [dsBrowse]);
+          btnExcluirP.Enabled:= Modulo.pet.State in [dsBrowse];
+          btnAtualizarP.Enabled:= Modulo.pet.State in [dsBrowse];
+          btnSalvarP.Enabled:= Modulo.pet.State in [dsInsert, dsEdit];
+          btnCancelarP.Enabled:= Modulo.pet.State in [dsInsert, dsEdit];
+          btnAdicionarP.Picture.LoadFromFile(DirFoto + 'Adicionar.png');
+          btnAtualizarP.Picture.LoadFromFile(DirFoto + 'Atualizar.png');
+          btnExcluirP.Picture.LoadFromFile(DirFoto + 'Excluir.png');
+          btnAtualizarP.Enabled:= true;
+          btnAdicionarP.Enabled:= true;
+          btnSalvarP.Enabled:= false;
+          btnCancelarP.Enabled:= false;
+          btnFecharP.Enabled:= true;
+        end;
+end;
+
+procedure TfrmClientes.paintbox1Paint(Sender: TObject); //Trocar cor fundo Cliente
+const
+      clStart: TColor = $00F7D56F;
+      clEnd: TColor = $00FFBB09;
+var
+      ACanvas, BCanvas, CCanvas: TCanvas;
+      ARect: TRect;
+      i : Integer;
+      rc, gc, bc, h: Integer;
+begin
+
+      ACanvas := paintbox1.Canvas;
+      BCanvas := paintbox2.Canvas;
+      CCanvas := paintbox3.Canvas;
+      ARect := PaintBox1.ClientRect;
+
+      h := ARect.Bottom - ARect.Top;
+
+      //Desenha fade
+      for i := 0 to (ARect.Bottom - ARect.Top) do
+        begin
+          rc := GetRValue(clStart);
+          gc := GetGValue(clStart);
+          bc := GetBValue(clStart);
+          rc := rc + (((GetRValue(clEnd) - rc) * (ARect.Top + i)) div h);
+          gc := gc + (((GetGValue(clEnd) - gc) * (ARect.Top + i)) div h);
+          bc := bc + (((GetBValue(clEnd) - bc) * (ARect.Top + i)) div h);
+          ACanvas.Brush.Style := bsSolid;
+          ACanvas.Brush.Color := RGB(rc, gc, bc);
+          ACanvas.FillRect(Rect(ARect.Left, ARect.Top + i, ARect.Right, ARect.Top + i + 1));
+
+          BCanvas.Brush.Style := bsSolid;
+          BCanvas.Brush.Color := RGB(rc, gc, bc);
+          BCanvas.FillRect(Rect(ARect.Left, ARect.Top + i, ARect.Right, ARect.Top + i + 1));
+
+          CCanvas.Brush.Style := bsSolid;
+          CCanvas.Brush.Color := RGB(rc, gc, bc);
+          CCanvas.FillRect(Rect(ARect.Left, ARect.Top + i, ARect.Right, ARect.Top + i + 1));
+        end;
+end;
+
+procedure TfrmClientes.Panel1Enter(Sender: TObject); //Trocar Fundo Painel
+var
+      altura,coluna: word;
+begin
+       altura:= (ClientHeight + 255) div 255;
+      for coluna:= 0 to 255 do
+        with Canvas do
+          begin
+            brush.Color:= RGB (coluna,5,5);
+            FillRect(Rect(0, coluna*altura, ClientWidth,(coluna+1)*altura));
+          end;
+end;
+
+procedure TfrmClientes.pgClientesChange(Sender: TObject); //Troca de TTabSheep
+var
+      TrocaTab: TTABSHEET;
+begin
+      if (pgClientes.ActivePageIndex = 0) then
+        begin
+          modulo.tbCliente.Last;
+          frmClientes.Height:= 405;
+          modulo.tbCliente.Active := true; //ativa BD do Cliente para utilizar botao
+        end
+      else
+      if (pgClientes.ActivePageIndex = 1) then
+        begin
+          modulo.Pet.Last;
+          frmClientes.Height:= 472;
+          modulo.Pet.Active := true; //ativa o BD do pet Para utilizar botao
+        end
+      else
+      if (pgClientes.ActivePageIndex = 2) then
+        begin
+          frmClientes.Height:= 422;
+        end;
+end;
+
+procedure TfrmClientes.pgClientesChanging(Sender: TObject;
+  var AllowChange: Boolean);
+begin
+      btnCancelarClick(sender);
+end;
+
+end.

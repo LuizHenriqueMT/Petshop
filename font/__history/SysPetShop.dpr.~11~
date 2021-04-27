@@ -1,0 +1,21 @@
+program SysPetShop;
+
+uses
+  Vcl.Forms,
+  ULogin in 'fonts\ULogin.pas' {frmLogin},
+  UCadastro in 'fonts\UCadastro.pas' {frmClientes},
+  UPrincipal in 'fonts\UPrincipal.pas' {frmPrincipal},
+  UDataBase in 'fonts\UDataBase.pas' {Modulo: TDataModule},
+  UEntrada in 'fonts\UEntrada.pas' {Entrada};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TfrmClientes, frmClientes);
+  Application.CreateForm(TModulo, Modulo);
+  Application.CreateForm(TEntrada, Entrada);
+  Application.Run;
+end.

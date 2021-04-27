@@ -1,0 +1,124 @@
+unit UDataBase;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.MySQLDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  FireDAC.Phys.MySQL, FireDAC.Comp.UI, jpeg;
+
+type
+  TModulo = class(TDataModule)
+    FDWaitCursor: TFDGUIxWaitCursor;
+    Conexao: TFDConnection;
+    FMDriver: TFDPhysMySQLDriverLink;
+    tbCliente: TFDTable;
+    DSCliente: TDataSource;
+    Usuario: TFDTable;
+    DSUsuario: TDataSource;
+    UsuarioCodUsuario: TIntegerField;
+    UsuarioNomeUser: TStringField;
+    UsuarioSenha: TStringField;
+    Pet: TFDTable;
+    DSPet: TDataSource;
+    Query: TFDQuery;
+    tbClienteClie_Codigo: TIntegerField;
+    tbClienteClie_Nome: TStringField;
+    tbClienteClie_Admissao: TDateField;
+    tbClienteClie_Celular: TIntegerField;
+    tbClienteClie_Nascm: TDateField;
+    tbClienteClie_Sexo: TStringField;
+    tbClienteClie_Endereco: TStringField;
+    tbClienteClie_NumEnd: TStringField;
+    tbClienteClie_Bairro: TStringField;
+    tbClienteClie_Cidade: TStringField;
+    tbClienteClie_UF: TStringField;
+    tbClienteClie_Pais: TStringField;
+    tbClienteClie_Email: TStringField;
+    tbClienteClie_Foto: TStringField;
+    PetPet_Codigo: TIntegerField;
+    PetPet_Nome: TStringField;
+    PetPet_Apelido: TStringField;
+    PetPet_Especie: TStringField;
+    PetPet_Raca: TStringField;
+    PetPet_Admissao: TDateField;
+    PetPet_Cor: TStringField;
+    PetPet_Sexo: TStringField;
+    PetPet_Porte: TStringField;
+    PetPet_Vacina: TStringField;
+    PetPet_Pelagem: TStringField;
+    PetPet_Detalhes: TMemoField;
+    PetPet_Alergia: TStringField;
+    PetPet_Deficiencia: TStringField;
+    PetPet_Pedigree: TStringField;
+    PetPet_Foto: TStringField;
+    PetClie_Codigo: TIntegerField;
+    PetPet_Peso: TSingleField;
+    QueryPet: TFDQuery;
+    QueryCodigo: TFDQuery;
+    QueryGrid: TFDQuery;
+    dsGrid: TDataSource;
+    QueryGridPet_Codigo: TIntegerField;
+    QueryGridPet_Nome: TStringField;
+    QueryGridPet_Apelido: TStringField;
+    QueryGridPet_Especie: TStringField;
+    QueryGridPet_Raca: TStringField;
+    QueryGridPet_Admissao: TDateField;
+    QueryGridPet_Cor: TStringField;
+    QueryGridPet_Sexo: TStringField;
+    QueryGridPet_Porte: TStringField;
+    QueryGridPet_Peso: TSingleField;
+    QueryGridPet_Vacina: TStringField;
+    QueryGridPet_Pelagem: TStringField;
+    QueryGridPet_Detalhes: TMemoField;
+    QueryGridPet_Alergia: TStringField;
+    QueryGridPet_Deficiencia: TStringField;
+    QueryGridPet_Pedigree: TStringField;
+    QueryGridPet_Foto: TStringField;
+    QueryGridClie_Codigo: TIntegerField;
+    tbClienteClie_CPF: TStringField;
+    PetClie_Nome: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure QueryCodigoBeforeInsert(DataSet: TDataSet);
+    procedure QueryPetBeforeInsert(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Modulo: TModulo;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UCadastro;
+
+{$R *.dfm}
+
+procedure TModulo.DataModuleCreate(Sender: TObject);
+begin
+
+      Conexao.Params.Database:= 'dbpetshop';
+      Conexao.Params.UserName:= 'root';
+      conexao.Params.Password:= '';
+      conexao.Connected:= true;
+      FMDriver.VendorLib:= GetCurrentDir + 'lib\libmySQL.dll';
+end;
+
+procedure TModulo.QueryCodigoBeforeInsert(DataSet: TDataSet);
+begin
+      modulo.tbCliente.Last;
+end;
+
+procedure TModulo.QueryPetBeforeInsert(DataSet: TDataSet);
+begin
+       modulo.pet.Last;
+end;
+
+end.

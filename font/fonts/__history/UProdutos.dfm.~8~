@@ -1,0 +1,190 @@
+object frmProdutos: TfrmProdutos
+  Left = 0
+  Top = 0
+  Caption = 'Produtos'
+  ClientHeight = 455
+  ClientWidth = 810
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PaintBox3: TPaintBox
+    Left = 0
+    Top = 0
+    Width = 810
+    Height = 455
+    Align = alClient
+    OnPaint = PaintBox3Paint
+    ExplicitLeft = 3
+    ExplicitWidth = 633
+    ExplicitHeight = 395
+  end
+  object lbProdCodigo: TLabel
+    Left = 21
+    Top = 26
+    Width = 67
+    Height = 16
+    Caption = 'C'#243'd. Prod:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 101
+    Top = 26
+    Width = 95
+    Height = 16
+    Caption = 'Nome Produto:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 21
+    Top = 74
+    Width = 43
+    Height = 16
+    Caption = 'Marca:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 293
+    Top = 26
+    Width = 32
+    Height = 16
+    Caption = 'Tipo:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 207
+    Top = 74
+    Width = 38
+    Height = 16
+    Caption = 'Qtde.:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 21
+    Top = 130
+    Width = 77
+    Height = 16
+    Caption = 'Pagamento:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 181
+    Top = 130
+    Width = 91
+    Height = 16
+    Caption = 'Valor Unit'#225'rio:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 309
+    Top = 130
+    Width = 72
+    Height = 16
+    Caption = 'Valor Total:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object DBEdit1: TDBEdit
+    Left = 21
+    Top = 48
+    Width = 63
+    Height = 21
+    TabOrder = 0
+  end
+  object DBEdit2: TDBEdit
+    Left = 101
+    Top = 48
+    Width = 180
+    Height = 21
+    TabOrder = 1
+  end
+  object DBEdit3: TDBEdit
+    Left = 21
+    Top = 96
+    Width = 180
+    Height = 21
+    TabOrder = 2
+  end
+  object DBComboBox1: TDBComboBox
+    Left = 293
+    Top = 48
+    Width = 145
+    Height = 22
+    Style = csOwnerDrawFixed
+    TabOrder = 3
+  end
+  object DBEdit4: TDBEdit
+    Left = 207
+    Top = 96
+    Width = 180
+    Height = 21
+    TabOrder = 4
+  end
+  object DBComboBox2: TDBComboBox
+    Left = 21
+    Top = 152
+    Width = 145
+    Height = 22
+    Style = csOwnerDrawFixed
+    TabOrder = 5
+  end
+  object DBEdit5: TDBEdit
+    Left = 181
+    Top = 152
+    Width = 100
+    Height = 21
+    TabOrder = 6
+  end
+  object DBEdit6: TDBEdit
+    Left = 309
+    Top = 152
+    Width = 100
+    Height = 21
+    TabOrder = 7
+  end
+end

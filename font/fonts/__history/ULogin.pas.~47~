@@ -1,0 +1,91 @@
+unit ULogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Buttons, data.db;
+
+type
+  TfrmLogin = class(TForm)
+    pnlPrincipal: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Shape1: TShape;
+    Label3: TLabel;
+    BitBtn1: TBitBtn;
+    btnEntrarUser: TBitBtn;
+    edtUsuario: TEdit;
+    edtSenha: TEdit;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure SetMainForm(NovoMainForm: TForm);
+    procedure btnEntrarUserClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+  end;
+
+var
+  frmLogin: TfrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+
+uses UPrincipal, UDataBase;
+
+procedure TfrmLogin.BitBtn1Click(Sender: TObject);
+begin
+      //Seta o frmPrincipal como MAIN
+      SetMainForm(frmPrincipal);
+      application.CreateForm(TFrmPrincipal, frmPrincipal);
+      frmPrincipal.ShowModal;
+      frmLogin.free;
+end;
+
+procedure TfrmLogin.btnEntrarUserClick(Sender: TObject); //Tela de Login
+begin
+      modulo.Usuario.Open; //Ativa a tabela
+      if modulo.Usuario.Locate('User_Name', edtUsuario.Text, [loCaseInsensitive ]) and
+         modulo.Usuario.Locate('User_Pass', edtSenha.Text, [loCaseInsensitive ]) then
+        begin
+          modulo.Usuario.Close;
+
+          SetMainForm(frmPrincipal);                            //FormPrincipal
+          application.CreateForm(TFrmPrincipal, frmPrincipal);
+          frmPrincipal.ShowModal;
+          frmLogin.free;
+        end
+      else
+      if (edtUsuario.Text = '') and (edtSenha.Text = '') then
+        begin
+          messageDlg('Preencha o usuario e a senha!',mtInformation,[mbOk],0);
+          edtUsuario.SetFocus;
+        end
+      else
+        begin
+          messagedlg('Usuario ou senha inválida!',mtWarning,[mbOk],0);
+          edtUsuario.Clear;
+          edtSenha.Clear;
+        end;
+end;
+
+procedure TfrmLogin.FormActivate(Sender: TObject);
+begin
+      //Inicialização login
+      edtUsuario.SetFocus;
+end;
+
+procedure TfrmLogin.SetMainForm(NovoMainForm: TForm);
+var   TmMain: ^TCustomForm;
+begin
+      TmMain:= @application.MainForm;
+      TmMain^:= NovoMainForm;
+end;
+
+end.

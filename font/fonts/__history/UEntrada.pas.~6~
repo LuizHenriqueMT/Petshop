@@ -1,0 +1,86 @@
+unit UEntrada;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  TfrmEntrada = class(TForm)
+    PaintBox2: TPaintBox;
+    procedure PaintBox2Paint(Sender: TObject);
+     procedure Panel1Enter(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmEntrada: TfrmEntrada;
+
+implementation
+
+{$R *.dfm}
+
+uses UDataBase;
+
+procedure TfrmEntrada.FormActivate(Sender: TObject);
+begin
+      Modulo.Conexao.Connected:= true;
+      modulo.tbCliente.Active:= true;
+      modulo.Usuario.Active:= true;
+      modulo.Pet.Active:= true;
+end;
+
+procedure TfrmEntrada.PaintBox2Paint(Sender: TObject);
+      const
+      clStart: TColor = $00F7D56F;
+      clEnd: TColor = $00FFBB09;
+var
+      ACanvas, BCanvas: TCanvas;
+      ARect: TRect;
+      i : Integer;
+      rc, gc, bc, h: Integer;
+begin
+
+      BCanvas := paintbox2.Canvas;
+      ARect := PaintBox2.ClientRect;
+
+      h := ARect.Bottom - ARect.Top;
+
+      //Desenha fade
+      for i := 0 to (ARect.Bottom - ARect.Top) do
+        begin
+          rc := GetRValue(clStart);
+          gc := GetGValue(clStart);
+          bc := GetBValue(clStart);
+          rc := rc + (((GetRValue(clEnd) - rc) * (ARect.Top + i)) div h);
+          gc := gc + (((GetGValue(clEnd) - gc) * (ARect.Top + i)) div h);
+          bc := bc + (((GetBValue(clEnd) - bc) * (ARect.Top + i)) div h);
+          ACanvas.Brush.Style := bsSolid;
+          ACanvas.Brush.Color := RGB(rc, gc, bc);
+          ACanvas.FillRect(Rect(ARect.Left, ARect.Top + i, ARect.Right, ARect.Top + i + 1));
+
+          BCanvas.Brush.Style := bsSolid;
+          BCanvas.Brush.Color := RGB(rc, gc, bc);
+          BCanvas.FillRect(Rect(ARect.Left, ARect.Top + i, ARect.Right, ARect.Top + i + 1));
+        end;
+end;
+
+procedure TfrmEntrada.Panel1Enter(Sender: TObject);
+      var
+      altura,coluna: word;
+begin
+       altura:= (ClientHeight + 255) div 255;
+      for coluna:= 0 to 255 do
+        with Canvas do
+          begin
+            brush.Color:= RGB (coluna,5,5);
+            FillRect(Rect(0, coluna*altura, ClientWidth,(coluna+1)*altura));
+          end;
+end;
+
+end.
